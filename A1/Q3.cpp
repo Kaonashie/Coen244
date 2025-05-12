@@ -4,6 +4,7 @@
 
 #include "Q3.h"
 
+int STRING_SIZE = 30;
 
 // TODO : Order of operations???
 int slice(char *str, int start, int end) {
@@ -32,82 +33,72 @@ void operation() {
             break;
         }
     }
-    int result = 0;
+    float result = 0;
     int temp = 0;
-
+    int number_of_ops = 0;
+    int number_of_numbers = 0;
+    char operations[30] = "";
+    char numbers[30] = "";
+    // Extract numbers and operations
     for (int i = 0; i < size; i++) {
-        if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' && str[i] != '7' && str[i] != '8' && str[i] != '9') {
-            // std::cout << "Numbers before index: " << std::endl;
-            // int sliced = slice(str, tempIndex, i);
-            // std::cout << "Slice: " << sliced << std::endl;
-
-            // tempIndex = i+1;
-            if (temp == 0) {
-                if (str[i] == '*') {
-                    std::cout << str[i-1] << " Mult by " << str[i+1] << "\n";
-                    result = (str[i-1] - '0') * (str[i+1] - '0');
-                    std::cout << result;
-                    std::cout << "\n";
-
-
-                } else if (str[i] == '/') {
-                    std::cout << str[i-1] << " Divided by " << str[i+1] << "\n";
-                    result = (str[i-1] - '0') / (str[i+1] - '0');
-                    std::cout << result;
-                    std::cout << "\n";
-
-
-
-                } else if (str[i] == '-') {
-                    std::cout << str[i-1] << " Minus " << str[i+1] << "\n";
-                    result = (str[i-1] - '0') - (str[i+1] - '0');
-
-                    std::cout << result;
-                    std::cout << "\n";
-
-
-                } else if (str[i] == '+') {
-                    std::cout << str[i-1] << " Plus " << str[i+1] << "\n";
-                    result = (str[i-1] - '0') + (str[i+1] - '0');
-
-                    std::cout << result;
-                    std::cout << "\n";
-
-                }
-                temp = 1;
-
-            } else {
-                if (str[i] == '*') {
-                    std::cout << result << " Mult by " << str[i+1] << "\n";
-                    result *= (str[i+1] - '0');
-                    std::cout << result;
-                    std::cout << "\n";
-
-                } else if (str[i] == '/') {
-                    std::cout << result << " Divided by " << str[i+1] << "\n";
-                    result /= (str[i+1] - '0');
-                    std::cout << result;
-                    std::cout << "\n";
-
-
-                } else if (str[i] == '-') {
-                    std::cout << result << " Minus " << str[i+1] << "\n";
-                    result -= (str[i+1] - '0');
-
-                    std::cout << result;
-                    std::cout << "\n";
-
-                } else if (str[i] == '+') {
-                    std::cout << result << " Plus " << str[i+1] << "\n";
-                    result += (str[i+1] - '0');
-
-                    std::cout << result;
-                    std::cout << "\n";
-
-                }
-            }
+        if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/') {
+            operations[number_of_ops++] = str[i];
+        } else {
+            numbers[number_of_numbers++] = str[i];
         }
     }
+    // Add a null terminator to the end of the numbers array
+    float lhs{}, rhs{};
+    // Start by doing the first multiplication and division
+    for (int i = 0; i < number_of_ops; i++) {
+        if (operations[i] == '*') {
+                lhs = (numbers[i] - '0');
+                rhs = (numbers[i+1] - '0');
+                result = result +  lhs * rhs;
+                break;
+        } else if (operations[i] == '/') {
+            lhs = (numbers[i] - '0');
+            rhs = (numbers[i+1] - '0');
+            result = lhs / rhs;
+            break;
+        }
+    }
+    std::cout << result << std::endl;
+
+    // Once first multiplication and division is done, we can do the rest
+    // Run through multiplaction and divisions
+    bool skip = true;
+    for (int i = 0; i < number_of_ops; i++) {
+        if (operations[i] == '*') {
+            if (skip) {
+                skip = false;
+                continue;
+            }
+            lhs = result;
+            rhs = (numbers[i+1] - '0');
+            result = lhs * rhs;
+        } else if (operations[i] == '/') {
+            if (skip) {
+                skip = false;
+                continue;
+            }
+            lhs = result;
+            rhs = (numbers[i+1] - '0');
+            result = lhs / rhs;
+        }
+    }
+    // Run through addition and subtraction
+    for (int i = 0; i < number_of_ops; i++) {
+        if (operations[i] == '+') {
+            rhs = numbers[i] - '0';
+            result += rhs;
+        } else if (operations[i] == '-') {
+            rhs = (numbers[i] - '0');
+            result -= rhs;
+        }
+    }
+
+    std::cout << result << std::endl;
 
 }
 

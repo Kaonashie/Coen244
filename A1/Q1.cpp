@@ -1,5 +1,7 @@
 #include "Q1.h"
 
+
+// TODO : Comment code
 class Letter {
 public:
     char name{};
@@ -44,9 +46,23 @@ public:
 
 
 void frequency() {
+    char inputstr[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     char str[30] = "";
     std::cout << "Enter a string: ";
     std::cin >> str;
+    for (int i = 0; i < 30; i++) {
+        bool found = false;
+        for (int j = 0; j < 26; j++) {
+            if (str[i] == inputstr[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            std::cout << "Invalid character: " << str[i] << "\n";
+            return;
+        }
+    }
     LetterArray letterArray;
     for (char character : str) {
         letterArray.add(character);

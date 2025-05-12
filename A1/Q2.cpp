@@ -3,7 +3,7 @@
 //
 
 #include "Q2.h"
-
+// TODO: Comment Code
 void symmetric() {
     char str[30] = "";
     std::cout << "Enter a string: ";

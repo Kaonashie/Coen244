@@ -4,6 +4,9 @@
 
 #include "Q4.h"
 
+
+// TODO : Print the address of the first letter of the plateau
+// TODO: Comment code
 void plateau() {
     char str[30] = "";
     std::cin.getline(str, 30);
@@ -40,7 +43,7 @@ void plateau() {
     std::cout << " of " << biggestConsecutive << " characters\n";
     for (int i = 0; i < size; i++) {
         if (str[i] == biggestChar) {
-            std::cout << "pointer to the first letter of the plateau: " << std::hex << *(str + i) << "\n";
+            std::cout << "pointer to the first letter of the plateau: " << std::hex << &*(str + i) << "\n";
             break;
         }
     }
