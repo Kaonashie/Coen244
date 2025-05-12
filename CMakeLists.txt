@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.31)
+project(Coen244Assignments)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(Coen244Assignments main.cpp)
+add_executable(A1 A1/main.cpp
+        A1/main.h)
+add_executable(A2 A2/main.cpp A2/main.h)
+add_executable(A3 A3/main.cpp A3/main.h)
+add_executable(A4 A4/main.cpp A4/main.h)
+add_executable(A5 A5/main.cpp A5/main.h)
+add_executable(A6 A6/main.cpp A6/main.h)
