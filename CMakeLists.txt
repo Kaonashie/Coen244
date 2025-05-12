@@ -4,10 +4,18 @@ project(Coen244Assignments)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Coen244Assignments main.cpp)
-add_executable(A1 A1/main.cpp
-        A1/main.h)
+add_executable(A1_Q1
+        A1/Q1.cpp
+        A1/Q1.h)
+add_executable(A1_Q2
+        A1/Q2.cpp
+        A1/Q2.h)
+add_executable(A1_Q3
+        A1/Q3.cpp
+        A1/Q3.h)
 add_executable(A2 A2/main.cpp A2/main.h)
 add_executable(A3 A3/main.cpp A3/main.h)
 add_executable(A4 A4/main.cpp A4/main.h)
 add_executable(A5 A5/main.cpp A5/main.h)
 add_executable(A6 A6/main.cpp A6/main.h)
+add_executable(A1_Q4 A1/Q4.cpp A1/Q4.h)
