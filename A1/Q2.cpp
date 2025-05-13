@@ -1,14 +1,12 @@
-//
-// Created by soma on 12/05/25.
-//
-
 #include "Q2.h"
-// TODO: Comment Code
+
+// Function that checks if a string is symmetric
 void symmetric() {
     char str[30] = "";
     std::cout << "Enter a string: ";
     std::cin >> str;
     int size {};
+    // Get the size of the string
     for (int i = 0; i < 30; i++) {
         if (str[i] == '\0') {
             size = i;
@@ -16,6 +14,7 @@ void symmetric() {
         }
     }
     std::cout << size << " characters\n";
+    // Check if the string is symmetric
     for (int i = 0; i < size; i++) {
         if (str[i] != str[size - i - 1]) {
             std::cout << "Not symmetric\n";

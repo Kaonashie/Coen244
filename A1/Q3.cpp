@@ -6,100 +6,57 @@
 
 int STRING_SIZE = 30;
 
-// TODO : Order of operations???
-int slice(char *str, int start, int end) {
-    int slice_size = end - start;
-    char sliced[slice_size];
-    int number = 0;
-    int i = 0;
-    for (int j = start; j < end; j++) {
-        sliced[i++] = str[j];
-    }
-    for (int i = 0; i < slice_size; i++) {
-        number = number * 10 + (sliced[i] - '0');
-    }
-    return number;
-}
-
+// Function that takes a string as input and evaluates the expression
 void operation() {
-    char str[30] = "4+5*3/2";
+    char str[30] = "9*3+5/2-8";
     // std::cout << "Enter a string: ";
     // std::cin >> str;
-    int size {};
+    double num = 0;
+    char op = '+';
+    double total = 0;
+    double last = 0;
+    /*
+    Here we loop through the string and check if the character is number or operator.
+    If it's a number, we convert multiply the current number by 10 and add the new number that we convert to an integer
+    to account for multiple digit number.
+    If it's an operator, we check on the last operator (that is store in op) and do the operation on the last number (stored in last).
+    If it's a + or -, we add the number to the total and set the last number to that current number.
+    If it's a *, we multiply the last number by the current number. Same for /.
+    Finally, we add the last number to the total.
+    The operator is set to + first so that last is set the first number.
 
-    for (int i = 0; i < 30; i++) {
-        if (str[i] == '\0') {
-            size = i;
-            break;
-        }
-    }
-    float result = 0;
-    int temp = 0;
-    int number_of_ops = 0;
-    int number_of_numbers = 0;
-    char operations[30] = "";
-    char numbers[30] = "";
-    // Extract numbers and operations
-    for (int i = 0; i < size; i++) {
-        if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/') {
-            operations[number_of_ops++] = str[i];
+    This respect order of operation because the multiplication and division never touch the total, only the last variable.
+    So we are doing the multiplication and division in a separate variable and then we add it to the total.
+    */
+    for (char c : str) {
+        if (c >= '0' && c <= '9') {
+            num = num * 10 + (c - '0');
         } else {
-            numbers[number_of_numbers++] = str[i];
-        }
-    }
-    // Add a null terminator to the end of the numbers array
-    float lhs{}, rhs{};
-    // Start by doing the first multiplication and division
-    for (int i = 0; i < number_of_ops; i++) {
-        if (operations[i] == '*') {
-                lhs = (numbers[i] - '0');
-                rhs = (numbers[i+1] - '0');
-                result = result +  lhs * rhs;
-                break;
-        } else if (operations[i] == '/') {
-            lhs = (numbers[i] - '0');
-            rhs = (numbers[i+1] - '0');
-            result = lhs / rhs;
-            break;
-        }
-    }
-    std::cout << result << std::endl;
-
-    // Once first multiplication and division is done, we can do the rest
-    // Run through multiplaction and divisions
-    bool skip = true;
-    for (int i = 0; i < number_of_ops; i++) {
-        if (operations[i] == '*') {
-            if (skip) {
-                skip = false;
-                continue;
+            switch (op) {
+                case '+':
+                    total += last;
+                    last = num;
+                    break;
+                case '-':
+                    total += last;
+                    last = -num;
+                    break;
+                case '*':
+                    last *= num;
+                    break;
+                case '/':
+                    last /= num;
+                    break;
+                default:
+                    break;
             }
-            lhs = result;
-            rhs = (numbers[i+1] - '0');
-            result = lhs * rhs;
-        } else if (operations[i] == '/') {
-            if (skip) {
-                skip = false;
-                continue;
-            }
-            lhs = result;
-            rhs = (numbers[i+1] - '0');
-            result = lhs / rhs;
-        }
-    }
-    // Run through addition and subtraction
-    for (int i = 0; i < number_of_ops; i++) {
-        if (operations[i] == '+') {
-            rhs = numbers[i] - '0';
-            result += rhs;
-        } else if (operations[i] == '-') {
-            rhs = (numbers[i] - '0');
-            result -= rhs;
+            op = c;
+            num = 0;
         }
     }
 
-    std::cout << result << std::endl;
-
+    total += last;
+    std::cout << total << std::endl;
 }
 
 
