@@ -5,7 +5,7 @@ void frequency() {
     // String to hold the input (Max size is 30)
     char str[30] = "";
     std::cout << "Enter a string: ";
-    std::cin >> str;
+    std::cin.getline(str, 30);
     // Input validation
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] < 'a' || str[i] > 'z' ) {

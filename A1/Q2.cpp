@@ -4,7 +4,7 @@
 void symmetric() {
     char str[30] = "";
     std::cout << "Enter a string: ";
-    std::cin >> str;
+    std::cin.getline(str, 30);
     int size {};
     // Get the size of the string
     for (int i = 0; i < 30; i++) {

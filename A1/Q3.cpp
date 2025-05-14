@@ -10,7 +10,7 @@ int STRING_SIZE = 30;
 void operation() {
     char str[30] = "";
     std::cout << "Enter a string: ";
-    std::cin >> str;
+    std::cin.getline(str, 30);
     double num = 0;
     char op = '+';
     double total = 0;
