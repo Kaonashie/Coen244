@@ -8,9 +8,9 @@ int STRING_SIZE = 30;
 
 // Function that takes a string as input and evaluates the expression
 void operation() {
-    char str[30] = "9*3+5/2-8";
-    // std::cout << "Enter a string: ";
-    // std::cin >> str;
+    char str[30] = "";
+    std::cout << "Enter a string: ";
+    std::cin >> str;
     double num = 0;
     char op = '+';
     double total = 0;

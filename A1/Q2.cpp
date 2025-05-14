@@ -14,7 +14,7 @@ void symmetric() {
         }
     }
     std::cout << size << " characters\n";
-    // Check if the string is symmetric
+    // Check if the string is symmetric by looking at the opposite index
     for (int i = 0; i < size; i++) {
         if (str[i] != str[size - i - 1]) {
             std::cout << "Not symmetric\n";

@@ -13,6 +13,7 @@ void frequency() {
             return;
         }
     }
+    // Array of length 26 to store all possible lowercase letters.
     int char_count[26] = {0};
     // Count the frequency of each letter in the string
     for (char j : str) {
