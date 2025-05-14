@@ -5,6 +5,5 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <iostream>
-#include <algorithm>
 
 #endif //MAIN_H
