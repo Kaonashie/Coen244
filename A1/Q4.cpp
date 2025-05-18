@@ -2,7 +2,7 @@
 // Created by soma on 12/05/25.
 //
 
-#include "Q4.h"
+#include "iostream"
 
 // Function that take a string as input and finds the biggest plateau
 void plateau() {

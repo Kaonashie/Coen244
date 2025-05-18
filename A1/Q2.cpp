@@ -1,4 +1,4 @@
-#include "Q2.h"
+#include "iostream"
 
 // Function that checks if a string is symmetric
 void symmetric() {

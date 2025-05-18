@@ -1,4 +1,4 @@
-#include "Q1.h"
+#include "iostream"
 
 // Function that takes a string as input and counts the frequency of each letter in the string
 void frequency() {

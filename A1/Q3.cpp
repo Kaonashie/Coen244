@@ -2,7 +2,7 @@
 // Created by soma on 12/05/25.
 //
 
-#include "Q3.h"
+#include "iostream"
 
 int STRING_SIZE = 30;
 
