@@ -168,7 +168,7 @@ void ClinicManager::print_patient_info(std::string d_name) const {
                 std::cout << "Patient's date of birth : " << *(patient->get_date_of_birth()) << "\n";
                 std::cout << "Patient's doctor's name : " << patient->get_doctor_name() << "\n";
                 std::cout << "Patient's medical insurance number : " << patient->get_name() << "\n";
-                std::cout << "Patient's appointment time : " << patient->get_appointment_time() << "\n";
+                std::cout << "Patient's appointment time : " << *(patient->get_appointment_time()) << "\n";
 
             }
         }

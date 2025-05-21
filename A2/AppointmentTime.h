@@ -10,23 +10,24 @@
 
 class AppointmentTime {
 private:
-    std::string day;
-    int hour, minute;
+	std::string day;
+	int hour, minute;
+
 public:
-    AppointmentTime();
-    AppointmentTime(const std::string &day, int h, int m);
+	AppointmentTime();
+	AppointmentTime(const std::string &day, int h, int m);
 
-    std::string get_day() const;
-    int get_hour() const;
-    int get_minute() const;
+	std::string get_day() const;
+	int get_hour() const;
+	int get_minute() const;
 
-    void set_day(const std::string &day);
-    void set_hour(int h);
-    void set_minute(int m);
+	void set_day(const std::string &day);
+	void set_hour(int h);
+	void set_minute(int m);
 
-    ~AppointmentTime();
+	friend std::ostream &operator<<(std::ostream &os, AppointmentTime &at);
+	~AppointmentTime();
 };
 
 
-
-#endif //APPOINTMENTTIME_H
+#endif // APPOINTMENTTIME_H
