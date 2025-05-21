@@ -40,7 +40,7 @@ void AppointmentTime::set_minute(int m) {
 	this->minute = m;
 }
 
-std::ostream &operator<<(std::ostream &os, AppointmentTime &at) {
+std::ostream &operator<<(std::ostream &os, const AppointmentTime &at) {
 	os << at.get_day() << " at " << at.get_hour() + 9 << "h " << at.get_minute() << "m \n";
 	return os;
 }

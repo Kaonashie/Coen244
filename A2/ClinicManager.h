@@ -33,6 +33,8 @@ public:
     AppointmentTime process_request(AppointmentRequest *r);
     void cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time);
     void print_patient_info(std::string d_name) const;
+	void add_num_weekly_appointment();
+	void remove_num_weekly_appointment();
 
 
     int get_index(std::string day);

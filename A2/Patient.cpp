@@ -6,7 +6,7 @@
 
 Patient::Patient() {
     this->date_of_birth = new Date();
-    this->appointment_time = new AppointmentTime();
+    this->appointment_time = nullptr;
     this->name = "";
     this->doctor_name = "";
     this->medical_insurance_number = "";
@@ -20,11 +20,11 @@ Patient::Patient(Date *dob, AppointmentTime *appt_time, const std::string &name,
     this->medical_insurance_number = med_ins_num;
 }
 
-Date* Patient::get_date_of_birth() const {
+const Date* Patient::get_date_of_birth() const {
     return this->date_of_birth;
 }
 
-AppointmentTime *Patient::get_appointment_time() const {
+const AppointmentTime *Patient::get_appointment_time() const {
     return this->appointment_time;
 }
 
@@ -68,6 +68,6 @@ Patient& Patient::set_medical_insurace_number(const std::string &med_ins_num) {
 
 Patient::~Patient() {
     delete date_of_birth;
-    delete appointment_time;
+    //delete appointment_time;
     std::cout << "Patient object destroyed successfully \n";
 }

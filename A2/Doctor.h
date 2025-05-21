@@ -13,6 +13,9 @@
 class Doctor {
 private:
     std::string name;
+
+	// TODO: Rewrite using c-style syntax ?
+	// Patient* appointments_2[5][12];
     std::array<std::array<Patient*, 12>, 5> appointments{};
 public:
     Doctor();

@@ -89,7 +89,7 @@ void ClinicManager::insert_doctor(Doctor * &d_new) {
         }
     }
 }
-
+// TODO: Make sure the patient does not have an appointment already
 AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
     Patient *reqPatient = find_patient(r->get_patient_name());
     Doctor *reqDoctor = find_doctor(r->get_doctor_name());
@@ -98,6 +98,11 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
         std::cout << "Either a patient or doctor was not found \n";
         return AppointmentTime{"Invalid", 0, 0};
     }
+
+	if (reqPatient->get_appointment_time() != nullptr) {
+		std::cout << "Patient already has an appointment \n";
+		return AppointmentTime{"Invalid", 0, 0};
+	}
 
     std::string day = r->get_day();
     int index = this->get_index(day);
@@ -108,6 +113,7 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
             appts[index][i] = reqPatient;
             reqDoctor->set_appointments(appts);
             reqPatient->set_doctor_name(reqDoctor->get_name());
+        	this->add_num_weekly_appointment();
             return AppointmentTime{day, i, 0};
         }
     }
@@ -133,6 +139,13 @@ Patient* ClinicManager::find_patient(std::string p_name) const {
     return nullptr;
 }
 
+ void ClinicManager::add_num_weekly_appointment() {
+	this->total_weekly_appointments++;
+}
+
+void ClinicManager::remove_num_weekly_appointment() {
+	this->total_weekly_appointments--;
+}
 
 
 void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time) {
@@ -146,13 +159,14 @@ void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, A
     }
 
     int index = get_index(appt_time.get_day());
-
+// TODO: Shift the array after removing the patient
     auto appts = doctor->get_appointments();
     for (int i = 0; i < 12; i++) {
         if (appts[index][i] == patient) {
             std::cout << "Found and deleted an appointment\n";
             appts[index][i] = nullptr;
             doctor->set_appointments(appts);
+        	this->remove_num_weekly_appointment();
             return;
         }
     }
@@ -165,15 +179,10 @@ void ClinicManager::print_patient_info(std::string d_name) const {
         for (auto patient : i) {
             if (patient != nullptr) {
                 std::cout << "Patient's name : " << patient->get_name() << "\n";
-                std::cout << "Patient's date of birth : " << *(patient->get_date_of_birth()) << "\n";
-                std::cout << "Patient's doctor's name : " << patient->get_doctor_name() << "\n";
-                std::cout << "Patient's medical insurance number : " << patient->get_name() << "\n";
-                std::cout << "Patient's appointment time : " << *(patient->get_appointment_time()) << "\n";
-
+                std::cout << "Patient's medical insurance number : " << patient->get_medical_insurance_number()<< "\n";
             }
         }
     }
-
 }
 
 ClinicManager::~ClinicManager() {

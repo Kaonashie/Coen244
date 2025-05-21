@@ -21,17 +21,22 @@ int main() {
     auto* appt_request = new AppointmentRequest("Soma", "Rioux", "Monday");
     auto* patient = new Patient();
 
-    patient->set_name("Soma").set_date_of_birth(dob);
+    patient->set_name("Soma").set_date_of_birth(dob).set_medical_insurace_number("100");
 
 
     CM->insert_patient(patient);
     CM->insert_doctor(doctor);
     auto appt_time = CM->process_request(appt_request);
-    patient->set_appointment_time(&appt_time);
+	patient->set_appointment_time(&appt_time);
+
+	std::cout << "Appointment succefully made for : " << *(patient->get_appointment_time()) << "\n";
+
 
     CM->print_patient_info(doctor->get_name());
 
     CM->cancel_appointment(doctor->get_name(),patient->get_name(), appt_time);
+
+
     delete CM;
     delete patient;
     delete doctor;

@@ -25,7 +25,7 @@ public:
 	void set_hour(int h);
 	void set_minute(int m);
 
-	friend std::ostream &operator<<(std::ostream &os, AppointmentTime &at);
+	friend std::ostream &operator<<(std::ostream &os,const AppointmentTime &at);
 	~AppointmentTime();
 };
 
