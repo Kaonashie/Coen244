@@ -21,6 +21,7 @@ public:
     void set_month(int m);
     void set_day(int d);
     void set_year(int y);
+    friend std::ostream& operator<<(std::ostream& os, const Date& dt);
 
     ~Date();
 };

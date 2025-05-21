@@ -32,8 +32,12 @@ public:
     void insert_doctor(Doctor* &d_new);
     AppointmentTime process_request(AppointmentRequest *r);
     void cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time);
-    void print_patient_info(std::string d_name);
+    void print_patient_info(std::string d_name) const;
 
+
+    int get_index(std::string day);
+    Doctor* find_doctor(std::string d_name) const;
+    Patient* find_patient(std::string p_name) const;
 
     ~ClinicManager();
 };

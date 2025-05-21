@@ -40,6 +40,12 @@ void Date::set_year(int y) {
     this->year = y;
 }
 
+std::ostream &operator<<(std::ostream &os, const Date &dt) {
+    os << dt.day << "/" << dt.month << "/" << dt.year;
+    return os;
+}
+
+
 Date::~Date() {
     std::cout << "Date object destroyed successfully \n";
 }

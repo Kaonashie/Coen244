@@ -29,6 +29,9 @@ int main() {
     auto appt_time = CM->process_request(appt_request);
     patient->set_appointment_time(&appt_time);
 
+    CM->print_patient_info(doctor->get_name());
+
+    CM->cancel_appointment(doctor->get_name(),patient->get_name(), appt_time);
     delete CM;
     delete patient;
     delete doctor;
