@@ -89,7 +89,7 @@ void ClinicManager::insert_doctor(Doctor * &d_new) {
         }
     }
 }
-// TODO: Make sure the patient does not have an appointment already
+
 AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
     Patient *reqPatient = find_patient(r->get_patient_name());
     Doctor *reqDoctor = find_doctor(r->get_doctor_name());
@@ -159,8 +159,7 @@ void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, A
     }
 
     int index = get_index(appt_time.get_day());
-// TODO: Shift the array after removing the patient
-    auto appts = doctor->get_appointments();
+	auto appts = doctor->get_appointments();
     for (int i = 0; i < 12; i++) {
         if (appts[index][i] == patient) {
             std::cout << "Found and deleted an appointment\n";
