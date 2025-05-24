@@ -103,7 +103,7 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
 		std::cout << "Patient already has an appointment \n";
 		return AppointmentTime{"Invalid", 0, 0};
 	}
-
+	int h, m;
     std::string day = r->get_day();
     int index = this->get_index(day);
     auto appts = reqDoctor->get_appointments();
@@ -114,7 +114,16 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
             reqDoctor->set_appointments(appts);
             reqPatient->set_doctor_name(reqDoctor->get_name());
         	this->add_num_weekly_appointment();
-            return AppointmentTime{day, i, 0};
+
+			if (i <= 6) {
+				h = 9 + (i/2); // 9:00, 10:00, ..., 15:00
+				m = i % 2 == 0 ? 0 : 30; // 9:00, 9:30, ..., 15:00, 15:30
+			} else {
+				h = 2 + (i - 6)/2; // 2:00, 3:00, ..., 5:00
+				m = (i - 6) % 2 == 0 ? 0 : 30; // 2:00, 2:30, ..., 5:00, 5:30
+			}
+
+            return AppointmentTime{day, h, m};
         }
     }
 
