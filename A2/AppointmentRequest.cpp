@@ -19,7 +19,6 @@ AppointmentRequest::AppointmentRequest(const std::string &p_name, const std::str
 std::string AppointmentRequest::get_patient_name() const { return this->patient_name; }
 
 std::string AppointmentRequest::get_doctor_name() const { return this->doctor_name; }
-
 std::string AppointmentRequest::get_day() const { return this->day; }
 
 void AppointmentRequest::set_doctor_name(const std::string &d_name) { this->doctor_name = d_name; }
