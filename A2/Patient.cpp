@@ -35,15 +35,39 @@ Patient::Patient(Date *dob, AppointmentTime *appt_time, const std::string &name,
 	this->medical_insurance_number = med_ins_num;
 }
 
-// Getter methods
+/**
+ * Retrieves the patient's date of birth
+ * 
+ * @return Pointer to the Date object representing the patient's date of birth 
+ */
 const Date *Patient::get_date_of_birth() const { return this->date_of_birth; }
 
+/**
+ * Retrieves the patient's appointment time
+ * 
+ * @return Pointer to the AppointmentTime object representing the patient's appointment time
+ */
 const AppointmentTime *Patient::get_appointment_time() const { return this->appointment_time; }
 
+/**
+ * Retrieves the patient's name
+ * 
+ * @return The patient's name as a string
+ */
 std::string Patient::get_name() const { return this->name; }
 
+/**
+ * Retrieves the doctor assigned to the patient
+ * 
+ * @return The doctor's name as a string
+ */
 std::string Patient::get_doctor_name() const { return this->doctor_name; }
 
+/**
+ * Retrieves the patient's medical insurance number
+ * 
+ * @return The patient's medical insurance number
+ */
 std::string Patient::get_medical_insurance_number() const { return this->medical_insurance_number; }
 
 
