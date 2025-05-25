@@ -40,14 +40,14 @@ int main() {
     CM->insert_doctor(doctor_2);
 
 
-    auto appt_time = CM->process_request(appt_request);
-    patient->set_appointment_time(&appt_time);
+    auto* appt_time = CM->process_request(appt_request);
+    patient->set_appointment_time(appt_time);
 
 
-    auto appt_time_2 = CM->process_request(appt_request_2);
+    auto* appt_time_2 = CM->process_request(appt_request_2);
 
-	auto appt_time_3 = CM->process_request(appt_request_3);
-	patient_2->set_appointment_time(&appt_time_3);
+	auto* appt_time_3 = CM->process_request(appt_request_3);
+	patient_2->set_appointment_time(appt_time_3);
 	std::cout << "Appointment succefully made for : " << *(patient->get_appointment_time()) << "\n";
 	std::cout << "Appointment succefully made for : " << *(patient_2->get_appointment_time()) << "\n";
 
@@ -59,14 +59,10 @@ int main() {
 
 
     delete CM;
-    delete patient;
-    delete doctor;
     delete dob;
     delete appt_request;
     delete appt_request_2;
     delete appt_request_3;
-    delete doctor_2;
-    delete patient_2;
     std::cout << "Program finished successfully \n";
     return 0;
 }
