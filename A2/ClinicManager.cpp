@@ -109,7 +109,7 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
     auto appts = reqDoctor->get_appointments();
     for (int i = 0; i < 12; i++) {
         if (appts[index][i] == nullptr) {
-            std::cout << "Found an empty slot\\n";
+            std::cout << "Found an empty slot\n";
             appts[index][i] = reqPatient;
             reqDoctor->set_appointments(appts); // Stays for now
             reqPatient->set_doctor_name(reqDoctor->get_name());
