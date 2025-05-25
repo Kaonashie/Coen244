@@ -4,32 +4,31 @@
 
 #ifndef DOCTOR_H
 #define DOCTOR_H
-#include <iostream>
 #include <array>
+#include <iostream>
 #include <string>
 #include "Patient.h"
 
 
 class Doctor {
 private:
-    std::string name;
+	std::string name;
 
 	// TODO: Rewrite using c-style syntax ?
 	// Patient* appointments_2[5][12];
-    std::array<std::array<Patient*, 12>, 5> appointments{};
+	std::array<std::array<Patient *, 12>, 5> appointments{};
+
 public:
-    Doctor();
+	Doctor();
 
-    std::string get_name() const;
-    std::array<std::array<Patient*, 12>, 5> get_appointments() const;
+	std::string get_name() const;
+	std::array<std::array<Patient *, 12>, 5> get_appointments() const;
 
-    Doctor& set_name(const std::string &name);
-    Doctor& set_appointments(std::array<std::array<Patient*, 12>, 5> &appointments);
+	Doctor &set_name(const std::string &name);
+	Doctor &set_appointments(std::array<std::array<Patient *, 12>, 5> &appointments);
 
-    ~Doctor();
-
+	~Doctor();
 };
 
 
-
-#endif //DOCTOR_H
+#endif // DOCTOR_H
