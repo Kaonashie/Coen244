@@ -25,10 +25,10 @@ public:
     std::string get_medical_insurance_number() const;
 
     Patient& set_date_of_birth(Date *dob);
-    Patient& set_appointment_time(AppointmentTime *appt_time);
+    Patient& set_appointment_time(AppointmentTime* appt_time);
     Patient& set_name(const std::string &name);
     Patient& set_doctor_name(const std::string &d_name);
-    Patient& set_medical_insurace_number(const std::string &med_ins_num);
+    Patient& set_medical_insurance_number(const std::string &med_ins_num);
 
     ~Patient();
 

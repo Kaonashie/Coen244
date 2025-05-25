@@ -4,13 +4,13 @@
 
 #include "Doctor.h"
 
-Doctor::Doctor() {
-    for (std::array d : this->appointments) {
-        for (Patient* p : d) {
-            p = nullptr;
+Doctor::Doctor() : name("") { // Initialize name in the initializer list
+    for (auto &day: appointments) {
+        for (auto &hour: day) {
+            hour = nullptr; // Initialize each appointment pointer to nullptr
         }
     }
-    this->name = "";
+    // this->name = ""; // Already initialized
 }
 
 std::string Doctor::get_name() const {

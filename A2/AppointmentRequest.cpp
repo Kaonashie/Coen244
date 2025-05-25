@@ -41,6 +41,5 @@ void AppointmentRequest::set_day(const std::string &day) {
 }
 
 AppointmentRequest::~AppointmentRequest() {
-    delete this;
     std::cout << "AppointmentRequest object destroyed successfully \n";
 }

@@ -12,7 +12,7 @@ Date::Date() {
 
 Date::Date(int m, int d, int y) {
     this->month = m;
-    this->day = d,
+    this->day = d;
     this->year = y;
 }
 

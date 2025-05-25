@@ -77,7 +77,7 @@ void ClinicManager::insert_patient(Patient *p_new) {
 void ClinicManager::insert_doctor(Doctor * &d_new) {
     for (Doctor * &d: this->doctors) {
         if (d == d_new) {
-            std::cout << "Patient already exists \n";
+            std::cout << "Doctor already exists \n";
             return;
         }
     }
@@ -90,18 +90,18 @@ void ClinicManager::insert_doctor(Doctor * &d_new) {
     }
 }
 
-AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
+AppointmentTime* ClinicManager::process_request(AppointmentRequest *r) {
     Patient *reqPatient = find_patient(r->get_patient_name());
     Doctor *reqDoctor = find_doctor(r->get_doctor_name());
 
     if (reqPatient == nullptr || reqDoctor == nullptr) {
         std::cout << "Either a patient or doctor was not found \n";
-        return AppointmentTime{"Invalid", 0, 0};
+        return new AppointmentTime{"Invalid", 0, 0};
     }
 
 	if (reqPatient->get_appointment_time() != nullptr) {
 		std::cout << "Patient already has an appointment \n";
-		return AppointmentTime{"Invalid", 0, 0};
+		return new AppointmentTime{"Invalid", 0, 0};
 	}
 	int h, m;
     std::string day = r->get_day();
@@ -109,29 +109,29 @@ AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
     auto appts = reqDoctor->get_appointments();
     for (int i = 0; i < 12; i++) {
         if (appts[index][i] == nullptr) {
-            std::cout << "Found an empty slot\n";
+            std::cout << "Found an empty slot\\n";
             appts[index][i] = reqPatient;
-            reqDoctor->set_appointments(appts);
+            reqDoctor->set_appointments(appts); // Stays for now
             reqPatient->set_doctor_name(reqDoctor->get_name());
         	this->add_num_weekly_appointment();
 
-			if (i <= 6) {
-				h = 9 + (i/2); // 9:00, 10:00, ..., 15:00
-				m = i % 2 == 0 ? 0 : 30; // 9:00, 9:30, ..., 15:00, 15:30
-			} else {
-				h = 2 + (i - 6)/2; // 2:00, 3:00, ..., 5:00
-				m = (i - 6) % 2 == 0 ? 0 : 30; // 2:00, 2:30, ..., 5:00, 5:30
-			}
+            if (i < 6) { // Morning slots: 0, 1, 2, 3, 4, 5
+                h = 9 + (i / 2);
+                m = (i % 2 == 0) ? 0 : 30;
+            } else { // Afternoon slots: 6, 7, 8, 9, 10, 11
+                h = 14 + ((i - 6) / 2);
+                m = ((i - 6) % 2 == 0) ? 0 : 30;
+            }
 
-            return AppointmentTime{day, h, m};
+            return new AppointmentTime{day, h, m};
         }
     }
 
-    return AppointmentTime{"Invalid", 0, 0};
+    return new AppointmentTime{"Invalid", 0, 0};
 }
 
 Doctor* ClinicManager::find_doctor(std::string d_name) const {
-    for (Doctor * &d: this->get_doctors()) {
+    for (Doctor *d: this->doctors) { // Iterate over actual member array, not a copy
         if (d != nullptr && d->get_name() == d_name) {
             return d;
         }
@@ -140,7 +140,7 @@ Doctor* ClinicManager::find_doctor(std::string d_name) const {
 }
 
 Patient* ClinicManager::find_patient(std::string p_name) const {
-    for (Patient * &p: this->get_patients()) {
+    for (Patient *p: this->patients) { // Iterate over actual member array, not a copy
         if (p != nullptr && p_name == p->get_name()) {
             return p;
         }
@@ -157,24 +157,26 @@ void ClinicManager::remove_num_weekly_appointment() {
 }
 
 
-void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time) {
-    Patient *patient = find_patient(p_name);
+void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time_ref) { // Renamed param for clarity
+    Patient *patient_to_cancel = find_patient(p_name);
     Doctor *doctor = find_doctor(d_name);
 
-
-    if (patient == nullptr || doctor == nullptr) {
-        std::cout << "Either a patient or doctor was not found \n";
+    if (patient_to_cancel == nullptr || doctor == nullptr) {
+        std::cout << "Either a patient or doctor was not found for cancellation\\\\n";
         return;
     }
 
-    int index = get_index(appt_time.get_day());
+    int index = get_index(appt_time_ref.get_day());
 	auto appts = doctor->get_appointments();
     for (int i = 0; i < 12; i++) {
-        if (appts[index][i] == patient) {
+        if (appts[index][i] == patient_to_cancel) {
             std::cout << "Found and deleted an appointment\n";
             appts[index][i] = nullptr;
             doctor->set_appointments(appts);
         	this->remove_num_weekly_appointment();
+        	patient_to_cancel->set_appointment_time(nullptr);
+        	std::cout << "Appointment details cleared from patient object: " << p_name << "\n";
+
             return;
         }
     }
