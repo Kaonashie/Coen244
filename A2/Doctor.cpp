@@ -10,7 +10,6 @@ Doctor::Doctor() : name("") { // Initialize name in the initializer list
             hour = nullptr; // Initialize each appointment pointer to nullptr
         }
     }
-    // this->name = ""; // Already initialized
 }
 
 std::string Doctor::get_name() const {

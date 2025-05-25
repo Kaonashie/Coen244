@@ -90,18 +90,18 @@ void ClinicManager::insert_doctor(Doctor * &d_new) {
     }
 }
 
-AppointmentTime* ClinicManager::process_request(AppointmentRequest *r) {
+AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
     Patient *reqPatient = find_patient(r->get_patient_name());
     Doctor *reqDoctor = find_doctor(r->get_doctor_name());
 
     if (reqPatient == nullptr || reqDoctor == nullptr) {
         std::cout << "Either a patient or doctor was not found \n";
-        return new AppointmentTime{"Invalid", 0, 0};
+        return AppointmentTime{"Invalid", 0, 0};
     }
 
 	if (reqPatient->get_appointment_time() != nullptr) {
 		std::cout << "Patient already has an appointment \n";
-		return new AppointmentTime{"Invalid", 0, 0};
+		return AppointmentTime{"Invalid", 0, 0};
 	}
 	int h, m;
     std::string day = r->get_day();
@@ -123,11 +123,11 @@ AppointmentTime* ClinicManager::process_request(AppointmentRequest *r) {
                 m = ((i - 6) % 2 == 0) ? 0 : 30;
             }
 
-            return new AppointmentTime{day, h, m};
+            return AppointmentTime{day, h, m};
         }
     }
 
-    return new AppointmentTime{"Invalid", 0, 0};
+    return AppointmentTime{"Invalid", 0, 0};
 }
 
 Doctor* ClinicManager::find_doctor(std::string d_name) const {
@@ -157,7 +157,7 @@ void ClinicManager::remove_num_weekly_appointment() {
 }
 
 
-void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time_ref) { // Renamed param for clarity
+void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, AppointmentTime &appt_time_ref) {
     Patient *patient_to_cancel = find_patient(p_name);
     Doctor *doctor = find_doctor(d_name);
 

@@ -47,9 +47,9 @@ Patient& Patient::set_date_of_birth(Date *dob) {
 }
 
 Patient& Patient::set_appointment_time(AppointmentTime *new_appt_time) {
-    if (this->appointment_time != nullptr && this->appointment_time != new_appt_time) {
-        delete this->appointment_time; // Delete old appointment if it exists and is different
-    }
+    // if (this->appointment_time != nullptr && this->appointment_time != new_appt_time) {
+    //     delete this->appointment_time; // Delete old appointment if it exists and is different
+    // }
     this->appointment_time = new_appt_time;
     return *this;
 }
@@ -72,7 +72,7 @@ Patient::~Patient() {
 	// date_of_birth is potentially shared as per main.cpp, so Patient should not delete it.
 	// delete date_of_birth;
 	if (appointment_time != nullptr) {
-		delete appointment_time; // Patient owns and deletes its specific AppointmentTime object.
+		// delete appointment_time; // Patient owns and deletes its specific AppointmentTime object.
 		this->appointment_time = nullptr; // Good practice.
 	}
 	std::cout << "Patient object destroyed successfully \n";

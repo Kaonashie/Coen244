@@ -40,14 +40,14 @@ int main() {
     CM->insert_doctor(doctor_2);
 
 
-    auto *appt_time = CM->process_request(appt_request);
-    patient->set_appointment_time(appt_time);
+    auto appt_time = CM->process_request(appt_request);
+    patient->set_appointment_time(&appt_time);
 
 
-    auto *appt_time_2 = CM->process_request(appt_request_2);
+    auto appt_time_2 = CM->process_request(appt_request_2);
 
-	auto *appt_time_3 = CM->process_request(appt_request_3);
-	patient_2->set_appointment_time(appt_time_3);
+	auto appt_time_3 = CM->process_request(appt_request_3);
+	patient_2->set_appointment_time(&appt_time_3);
 	std::cout << "Appointment succefully made for : " << *(patient->get_appointment_time()) << "\n";
 	std::cout << "Appointment succefully made for : " << *(patient_2->get_appointment_time()) << "\n";
 
@@ -55,7 +55,7 @@ int main() {
 
     CM->print_patient_info(doctor->get_name());
 
-    CM->cancel_appointment(doctor->get_name(),patient->get_name(), *appt_time);
+    CM->cancel_appointment(doctor->get_name(),patient->get_name(), appt_time);
 
 
     delete CM;
