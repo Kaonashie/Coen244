@@ -8,9 +8,7 @@
  * Default constructor
  * Initializes a patient with empty values
  */
-Patient::Patient() {
-	this->date_of_birth = nullptr;
-	this->appointment_time = nullptr;
+Patient::Patient(): date_of_birth(Date()), appointment_time(AppointmentTime()) {
 	this->name = "";
 	this->doctor_name = "";
 	this->medical_insurance_number = "";
@@ -20,13 +18,13 @@ Patient::Patient() {
  * Parameterized constructor
  * Creates a patient with complete information
  * 
- * @param dob Pointer to the patient's date of birth
- * @param appt_time Pointer to the patient's appointment time
+ * @param dob Reference to the patient's date of birth
+ * @param appt_time Reference to the patient's appointment time
  * @param name Patient's name
  * @param d_name Doctor's name assigned to the patient
  * @param med_ins_num Patient's medical insurance number
  */
-Patient::Patient(Date *dob, AppointmentTime *appt_time, const std::string &name, const std::string &d_name,
+Patient::Patient(Date &dob, AppointmentTime &appt_time, const std::string &name, const std::string &d_name,
 				 const std::string &med_ins_num) {
 	this->date_of_birth = dob;
 	this->appointment_time = appt_time;
@@ -40,14 +38,14 @@ Patient::Patient(Date *dob, AppointmentTime *appt_time, const std::string &name,
  * 
  * @return Pointer to the Date object representing the patient's date of birth 
  */
-const Date *Patient::get_date_of_birth() const { return this->date_of_birth; }
+const Date &Patient::get_date_of_birth() const { return this->date_of_birth; }
 
 /**
  * Retrieves the patient's appointment time
  * 
  * @return Pointer to the AppointmentTime object representing the patient's appointment time
  */
-const AppointmentTime *Patient::get_appointment_time() const { return this->appointment_time; }
+const AppointmentTime &Patient::get_appointment_time() const { return this->appointment_time; }
 
 /**
  * Retrieves the patient's name
@@ -74,11 +72,15 @@ std::string Patient::get_medical_insurance_number() const { return this->medical
 /**
  * Sets the patient's date of birth
  * 
- * @param dob Pointer to Date object representing date of birth
+ * @param m Month of the date of birth
+ * @param d Day of the date of birth
+ * @param y Year of the date of birth
  * @return Reference to this patient for method chaining
  */
-Patient &Patient::set_date_of_birth(Date *dob) {
-	this->date_of_birth = dob;
+Patient &Patient::set_date_of_birth(int m, int d, int y) {
+	this->date_of_birth.set_month(m);
+	this->date_of_birth.set_day(d);
+	this->date_of_birth.set_year(y);
 	return *this;
 }
 
@@ -86,10 +88,10 @@ Patient &Patient::set_date_of_birth(Date *dob) {
  * Sets the patient's appointment time
  * Note: Patient is only allowed one appointment at a time
  * 
- * @param new_appt_time Pointer to AppointmentTime object
+ * @param new_appt_time Reference to AppointmentTime object
  * @return Reference to this patient for method chaining
  */
-Patient &Patient::set_appointment_time(AppointmentTime *new_appt_time) {
+Patient &Patient::set_appointment_time(const AppointmentTime &new_appt_time) {
 	// if (this->appointment_time != nullptr && this->appointment_time != new_appt_time) {
 	//     delete this->appointment_time; // Delete old appointment if it exists and is different
 	// }
@@ -133,15 +135,9 @@ Patient &Patient::set_medical_insurance_number(const std::string &med_ins_num) {
 /**
  * Destructor
  * Cleans up memory used by the patient object
- * Note: date_of_birth is not deleted since it might be shared between patients
+ * 
  */
 Patient::~Patient() {
-	if (appointment_time != nullptr) {
-		this->appointment_time = nullptr; // Good practice.
-	}
-    if (date_of_birth != nullptr) {
-        delete date_of_birth; // Assuming Patient owns the Date object.
-        date_of_birth = nullptr; // Good practice.
-    }
+
 	std::cout << "Patient object destroyed successfully \n";
 }

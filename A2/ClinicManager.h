@@ -44,7 +44,7 @@ public:
 	// Core clinic management functions
 	void insert_patient(Patient *p_new);                                        // Add new patient to the system
 	void insert_doctor(Doctor *&d_new);                                         // Add new doctor to the system
-	AppointmentTime *process_request(AppointmentRequest *r);                    // Schedule an appointment
+	AppointmentTime process_request(AppointmentRequest *r);                    // Schedule an appointment
 	void cancel_appointment(std::string d_name, std::string p_name, AppointmentTime *appt_time); // Cancel an appointment
 	void print_patient_info(std::string d_name) const;                          // Print patient info for a doctor
 	

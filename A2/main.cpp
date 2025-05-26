@@ -17,7 +17,7 @@
  * @return true of false
  */
 bool validate_appointment(AppointmentTime* appt_time) {
-	if (appt_time->get_day() == "Invalid"){
+	if (appt_time->get_day() == "0"){
         std::cout << "Invalid appointment time. \n";
 		return false;
     }
@@ -34,9 +34,6 @@ int main() {
     // Create a ClinicManager instance
 	auto *CM = new ClinicManager();
 
-    // Create some sample data for testing
-	auto *dob = new Date(02, 12, 2002);
-    auto *dob_2 = new Date(03, 12, 2002);
 
     // Create doctors and patients
 	auto *doctor = new Doctor();
@@ -46,12 +43,13 @@ int main() {
 	doctor_2->set_name("James");
 
 	auto *patient = new Patient();
-	patient->set_name("Soma").set_date_of_birth(dob).set_medical_insurance_number("100");
+	patient->set_name("Soma").set_date_of_birth(02, 12, 2002).set_medical_insurance_number("100");
 
 	auto *patient_2 = new Patient();
-	patient_2->set_name("Marc").set_date_of_birth(dob_2).set_medical_insurance_number("101");
+	patient_2->set_name("Marc").set_date_of_birth(03, 12, 2003).set_medical_insurance_number("101");
 
     // Create appointment requests
+
 	auto appt_request = new AppointmentRequest("Soma", "Rioux", "Monday");
     /**
      * AppointmentRequest that has the same patient name as the first one to demonstrate
@@ -68,30 +66,30 @@ int main() {
 
 
     // Process the first appointment request for the same patient (should succeed)
-	auto *appt_time = CM->process_request(appt_request);
-    if (validate_appointment(appt_time)) 
+	auto appt_time = CM->process_request(appt_request);
+    if (validate_appointment(&appt_time))
         patient->set_appointment_time(appt_time);
     
     // Process the second appointment request for the same patient (should fail)
-	auto *appt_time_2 = CM->process_request(appt_request_2);
-    if (validate_appointment(appt_time_2))
+	auto appt_time_2 = CM->process_request(appt_request_2);
+    if (validate_appointment(&appt_time_2))
         patient->set_appointment_time(appt_time);
 
     // Process the third appointment request for a different patient (should succeed)
-	auto *appt_time_3 = CM->process_request(appt_request_3);
-    if (validate_appointment(appt_time_3))
+	auto appt_time_3 = CM->process_request(appt_request_3);
+    if (validate_appointment(&appt_time_3))
         patient_2->set_appointment_time(appt_time_3);
 
     // Print appointment times for both patients
-	std::cout << "Appointment succefully made for : " << *(patient->get_appointment_time()) << "\n";
-	std::cout << "Appointment succefully made for : " << *(patient_2->get_appointment_time()) << "\n";
+	std::cout << "Appointment succefully made for : " << (patient->get_appointment_time()) << "\n";
+	std::cout << "Appointment succefully made for : " << (patient_2->get_appointment_time()) << "\n";
 
 
     // Print the doctors's patient information
 	CM->print_patient_info(doctor->get_name());
 
     // Cancel an appointment
-	CM->cancel_appointment(doctor->get_name(), patient->get_name(), appt_time);
+	CM->cancel_appointment(doctor->get_name(), patient->get_name(), &appt_time);
 
 
     /**

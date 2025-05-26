@@ -146,21 +146,21 @@ void ClinicManager::insert_doctor(Doctor *&d_new) {
  * Updates doctor's appointment schedule and returns appointment details
  * 
  * @param r Pointer to the appointment request
- * @return Dynamically allocated AppointmentTime object with scheduling details
- *         (returns AppointmentTime with "Invalid" if scheduling fails)
+ * @return AppointementTime Object
+ *         (returns AppointmentTime with "0" if scheduling fails)
  */
-AppointmentTime *ClinicManager::process_request(AppointmentRequest *r) {
+AppointmentTime ClinicManager::process_request(AppointmentRequest *r) {
 	Patient *reqPatient = find_patient(r->get_patient_name());
 	Doctor *reqDoctor = find_doctor(r->get_doctor_name());
 
 	if (reqPatient == nullptr || reqDoctor == nullptr) {
 		std::cout << "Either a patient or doctor was not found \n";
-		return new AppointmentTime{"Invalid", 0, 0};
+		return AppointmentTime{"0", 0, 0};
 	}
 
-	if (reqPatient->get_appointment_time() != nullptr) {
+	if (reqPatient->get_appointment_time().get_hour() != 0) {
 		std::cout << "Patient already has an appointment \n";
-		return new AppointmentTime{"Invalid", 0, 0};
+		return AppointmentTime{"0", 0, 0};
 	}
 	int h, m;
 	std::string day = r->get_day();
@@ -183,11 +183,11 @@ AppointmentTime *ClinicManager::process_request(AppointmentRequest *r) {
 				m = ((i - 6) % 2 == 0) ? 0 : 30;
 			}
 
-			return new AppointmentTime{day, h, m};
+			return AppointmentTime{day, h, m};
 		}
 	}
 
-	return new AppointmentTime{"Invalid", 0, 0};
+	return AppointmentTime{"0", 0, 0};
 }
 
 /**
@@ -255,7 +255,7 @@ void ClinicManager::cancel_appointment(std::string d_name, std::string p_name, A
 			appts[index][i] = nullptr;
 			doctor->set_appointments(appts);
 			this->remove_num_weekly_appointment();
-			patient_to_cancel->set_appointment_time(nullptr);
+			patient_to_cancel->set_appointment_time(AppointmentTime());
 			std::cout << "Appointment details cleared from patient object: " << p_name << "\n";
 
 			return;

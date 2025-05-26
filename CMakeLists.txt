@@ -26,7 +26,18 @@ add_executable(A2 A2/main.cpp A2/main.h
         A2/AppointmentRequest.h
         A2/ClinicManager.cpp
         A2/ClinicManager.h)
-add_executable(A3 A3/main.cpp A3/main.h)
+add_executable(A3 A3/main.cpp A3/main.h
+    A3/Date.cpp
+        A3/Date.h
+        A3/Person.cpp
+        A3/Person.h
+        A3/Doctor.cpp
+        A3/Doctor.h
+        A3/Patient.cpp
+        A3/Patient.h
+        A3/HospitalManager.cpp
+        A3/HospitalManager.h
+)
 add_executable(A4 A4/main.cpp A4/main.h)
 add_executable(A5 A5/main.cpp A5/main.h)
 add_executable(A6 A6/main.cpp A6/main.h)
