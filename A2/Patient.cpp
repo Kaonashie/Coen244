@@ -10,7 +10,7 @@
  */
 Patient::Patient() {
 	this->date_of_birth = nullptr;
-	this->appointment_time = nullptr; // Default constructor
+	this->appointment_time = nullptr;
 	this->name = "";
 	this->doctor_name = "";
 	this->medical_insurance_number = "";
@@ -136,10 +136,7 @@ Patient &Patient::set_medical_insurance_number(const std::string &med_ins_num) {
  * Note: date_of_birth is not deleted since it might be shared between patients
  */
 Patient::~Patient() {
-	// date_of_birth is potentially shared as per main.cpp, so Patient should not delete it.
-	// delete date_of_birth;
 	if (appointment_time != nullptr) {
-		// delete appointment_time; // Patient owns and deletes its specific AppointmentTime object.
 		this->appointment_time = nullptr; // Good practice.
 	}
     if (date_of_birth != nullptr) {
