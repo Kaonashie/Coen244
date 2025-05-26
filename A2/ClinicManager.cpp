@@ -275,6 +275,7 @@ void ClinicManager::print_patient_info(std::string d_name) const {
 		return;
 	}
 	auto appts = doctor->get_appointments();
+	std::cout << "#------Printing Dr." << doctor->get_name() << "'s Patient Info------#\n";
 	for (auto i: appts) {
 		for (auto patient: i) {
 			if (patient != nullptr) {
@@ -283,6 +284,7 @@ void ClinicManager::print_patient_info(std::string d_name) const {
 			}
 		}
 	}
+	std::cout << "#-----------------------------------------------#\n";
 }
 
 /**

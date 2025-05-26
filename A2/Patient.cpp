@@ -142,5 +142,9 @@ Patient::~Patient() {
 		// delete appointment_time; // Patient owns and deletes its specific AppointmentTime object.
 		this->appointment_time = nullptr; // Good practice.
 	}
+    if (date_of_birth != nullptr) {
+        delete date_of_birth; // Assuming Patient owns the Date object.
+        date_of_birth = nullptr; // Good practice.
+    }
 	std::cout << "Patient object destroyed successfully \n";
 }
