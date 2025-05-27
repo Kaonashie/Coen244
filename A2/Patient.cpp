@@ -25,9 +25,7 @@ Patient::Patient(): date_of_birth(Date()), appointment_time(AppointmentTime()) {
  * @param med_ins_num Patient's medical insurance number
  */
 Patient::Patient(Date &dob, AppointmentTime &appt_time, const std::string &name, const std::string &d_name,
-				 const std::string &med_ins_num) {
-	this->date_of_birth = dob;
-	this->appointment_time = appt_time;
+				 const std::string &med_ins_num) : date_of_birth(dob), appointment_time(appt_time){
 	this->name = name;
 	this->doctor_name = d_name;
 	this->medical_insurance_number = med_ins_num;
