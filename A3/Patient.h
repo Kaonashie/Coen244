@@ -15,7 +15,7 @@ private:
 	int bed_number;
 public:
 	Patient();
-	Patient(std::string &min, std::string &name, Date &date_admitted, int bed_number);
+	Patient(std::string name, Date dob, std::string min, std::string d_name, Date date_admitted, int bed_number = 0);
 
 	std::string get_medical_insurance_number() const;
 	std::string get_doctor_name() const;

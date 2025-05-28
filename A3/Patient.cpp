@@ -5,12 +5,7 @@
 #include "Patient.h"
 
 Patient::Patient() : date_admitted(Date()), bed_number(0), Person(){  }
- Patient::Patient(std::string &min, std::string &name, Date &date_admitted, int bed_number) {
-	this->medical_insurance_number = min;
-	this->doctor_name = name;
-	this->date_admitted = date_admitted;
-	this->bed_number = bed_number;
-}
+Patient::Patient(std::string name, Date dob, std::string min, std::string d_name, Date date_admitted, int bed_number): medical_insurance_number(min), doctor_name(d_name), Person(name, dob), date_admitted(date_admitted), bed_number(bed_number){};
 
 
 std::string Patient::get_medical_insurance_number() const { return this->medical_insurance_number; }

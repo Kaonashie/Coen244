@@ -14,16 +14,17 @@
 class Doctor : public Person {
 private:
 	int id;
-	std::array<Patient*, 50> patients;
+	Patient* patients[50]{};
 public:
 	Doctor();
-	Doctor(int id, std::array<Patient*, 50> patients);
+	Doctor(int id, Date dob, const std::string name);
 
 	int get_id() const;
-	std::array<Patient*, 50> get_patients() const;
+	Patient* get_patient(int i) const;
 
 	void set_id(int new_id);
-	void set_patients(std::array<Patient*, 50> new_patients);
+	void add_patient(Patient* new_patient);
+	void remove_patient(Patient* pat);
 
 	~Doctor();
 };
