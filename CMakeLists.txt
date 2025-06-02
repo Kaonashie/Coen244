@@ -40,6 +40,18 @@ add_executable(A3
         A3/HospitalManager.cpp
         A3/HospitalManager.h
 )
-add_executable(A4 A4/main.cpp A4/main.h)
+add_executable(A4 A4/main.cpp A4/main.h
+        A4/Customer.cpp
+        A4/Customer.h
+        A4/RealEstateAgent.cpp
+        A4/RealEstateAgent.h
+        A4/Property.cpp
+        A4/Property.h
+        A4/LandSale.cpp
+        A4/LandSale.h
+        A4/ApartmentSale.cpp
+        A4/ApartmentSale.h
+        A4/RealEstateManager.cpp
+        A4/RealEstateManager.h)
 add_executable(A5 A5/main.cpp A5/main.h)
 add_executable(A6 A6/main.cpp A6/main.h)
