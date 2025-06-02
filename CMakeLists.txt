@@ -41,14 +41,18 @@ add_executable(A3
         A3/HospitalManager.h
 )
 add_executable(A4 A4/main.cpp A4/main.h
+        A4/Date.cpp
+        A4/Date.h
+        A4/Person.cpp
+        A4/Person.h
         A4/Customer.cpp
         A4/Customer.h
         A4/RealEstateAgent.cpp
         A4/RealEstateAgent.h
         A4/Property.cpp
         A4/Property.h
-        A4/LandSale.cpp
-        A4/LandSale.h
+        A4/HouseSale.cpp
+        A4/HouseSale.h
         A4/ApartmentSale.cpp
         A4/ApartmentSale.h
         A4/RealEstateManager.cpp

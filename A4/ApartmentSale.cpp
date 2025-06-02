@@ -3,3 +3,4 @@
 //
 
 #include "ApartmentSale.h"
+ApartmentSale::ApartmentSale() : Property() {}

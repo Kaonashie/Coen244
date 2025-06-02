@@ -10,15 +10,16 @@
 class Property {
 private:
 	static int counter;
-	int unique_id;
+	int unique_id{};
 	std::string address;
 	Customer owner;
-	int agent_id;
+	int agent_id{};
 	Date listing_date;
 	Date sell_date;
-	int sold_price;
+	int sold_price{};
 
 public:
+	Property();
 	Property(const std::string &address, const Customer &owner, int agent_id, const Date &listing_date,
 			 const Date &sell_date, int sold_price);
 	virtual ~Property() = default;

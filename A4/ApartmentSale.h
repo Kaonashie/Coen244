@@ -19,8 +19,9 @@ public:
 	void set_year_built(int year_built) { this->year_built = year_built; }
 	int get_no_rooms() const { return no_rooms; }
 	void set_no_rooms(int no_rooms) { this->no_rooms = no_rooms; }
-	int get_sale_price() const { return sale_price; }
+	virtual int get_sale_price() const { return sale_price; }
 	void set_sale_price(int sale_price) { this->sale_price = sale_price; }
+	ApartmentSale();
 	ApartmentSale(const std::string &address, const Customer &owner, int agent_id, const Date &listing_date,
 				  const Date &sell_date, int sold_price, double condo_fees, int year_built, int no_rooms,
 				  int sale_price) :
