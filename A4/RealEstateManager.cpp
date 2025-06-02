@@ -3,6 +3,8 @@
 //
 
 #include "RealEstateManager.h"
+
+// Constructors
 RealEstateManager::RealEstateManager() {
 	for (int i = 0; i < 30; i++) {
 		agents[i] = nullptr;
@@ -16,6 +18,8 @@ RealEstateManager::RealEstateManager() {
 		properties_sold[i] = nullptr;
 	}
 }
+
+// Destructor
 RealEstateManager::~RealEstateManager() {
 	for (int i = 0; i < 30; i++) {
 		if (agents[i] != nullptr) {
@@ -39,6 +43,7 @@ RealEstateManager::~RealEstateManager() {
 	}
 }
 
+// Management functions
 void RealEstateManager::insert_agent(RealEstateAgent *agent) {
 	for (int i = 0; i < 30; i++) {
 		if (agents[i] == nullptr) {
@@ -56,9 +61,14 @@ void RealEstateManager::insert_property(Property *property) {
 		}
 	}
 }
+
 void RealEstateManager::sold_house(Property *property, int price, Date date_of_sale) {
 
 }
+
+// Print functions
 void RealEstateManager::print_property_info(int id) const {}
+
 void RealEstateManager::print_agent_properties(int agent_id) const {}
+
 void RealEstateManager::print_all_properties() const {}

@@ -3,4 +3,6 @@
 //
 
 #include "ApartmentSale.h"
+
+// Constructors
 ApartmentSale::ApartmentSale() : Property() {}

@@ -3,3 +3,6 @@
 //
 
 #include "RealEstateAgent.h"
+
+// Implementation file for RealEstateAgent class
+// All methods are implemented inline in the header file
