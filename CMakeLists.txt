@@ -3,7 +3,7 @@ project(Coen244Assignments)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Coen244Assignments main.cpp)
+
 add_executable(A1_Q1
         A1/Q1.cpp
 )
@@ -26,8 +26,10 @@ add_executable(A2 A2/main.cpp A2/main.h
         A2/AppointmentRequest.h
         A2/ClinicManager.cpp
         A2/ClinicManager.h)
-add_executable(A3 A3/main.cpp A3/main.h
-    A3/Date.cpp
+add_executable(A3 
+        A3/main.cpp 
+        A3/main.h
+        A3/Date.cpp
         A3/Date.h
         A3/Person.cpp
         A3/Person.h
@@ -41,4 +43,3 @@ add_executable(A3 A3/main.cpp A3/main.h
 add_executable(A4 A4/main.cpp A4/main.h)
 add_executable(A5 A5/main.cpp A5/main.h)
 add_executable(A6 A6/main.cpp A6/main.h)
-add_executable(A1_Q4 A1/Q4.cpp)

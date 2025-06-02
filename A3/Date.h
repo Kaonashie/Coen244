@@ -33,6 +33,8 @@ public:
 	void set_day(int d);
 	void set_year(int y);
 
+	// Print function
+	void print_info() const;
 	// Overloaded output operator for Date class
 	friend std::ostream &operator<<(std::ostream &os, const Date &dt);
 

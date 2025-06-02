@@ -62,9 +62,15 @@ void Date::set_day(int d) { this->day = d; }
 void Date::set_year(int y) { this->year = y; }
 
 /**
+ * Prints out the date
+ *
+ */
+void Date::print_info() const { std::cout << day << " " << month << " " << year << "\n"; }
+
+/**
  * Overloaded output operator for Date class
  * Formats the date as "day/month/year"
- * 
+ *
  * @param os Output stream to write to
  * @param dt Date object to format
  * @return Reference to the output stream

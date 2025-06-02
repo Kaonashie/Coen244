@@ -8,13 +8,27 @@
 #include "Patient.h"
 
 int main() {
-	auto patient_1 = new Patient("Soma", Date(02, 12, 2002), "100", "", Date(), 0);
 
 	auto doctor_1 = new Doctor(0, Date(02, 11, 1996), "Rioux");
+	auto patient_1 = new Patient("Soma", Date(02, 12, 2002), "100", doctor_1->get_name(), Date());
+	auto patient_2 = new Patient("James", Date(05, 9, 2005), "1001", doctor_1->get_name(), Date());
 	auto manager_1 = new HospitalManager();
-	doctor_1->add_patient(patient_1);
-	manager_1->admit_patient(*patient_1);
+
 	manager_1->insert_doctor(*doctor_1);
+	manager_1->admit_patient(*patient_1);
+
+	std::cout << "\n=== After First Admission ===\n";
+	manager_1->print_patient_info("Rioux");
+	manager_1->print_all_patients();
+	manager_1->admit_patient(*patient_2);
+
+	std::cout << "\n=== After Second Admission ===\n\n";
+	manager_1->print_all_patients();
+
 	manager_1->discharge_patient(*patient_1);
-    return 0;
+	manager_1->discharge_patient(*patient_2);
+
+	delete manager_1;
+	std::cout << "Program finished." << std::endl;
+	return 0;
 }
