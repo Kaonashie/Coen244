@@ -4,6 +4,9 @@
 
 #include "HospitalManager.h"
 
+/**
+ * Default constructor.
+ */
 HospitalManager::HospitalManager() : total_free_beds(100) {
 	for (int i = 0; i < 20; i++) {
 		doctors[i] = nullptr;
@@ -14,6 +17,10 @@ HospitalManager::HospitalManager() : total_free_beds(100) {
 	}
 }
 
+/**
+ * Inserts a doctors in the array.
+ * @param new_doc new doctor to insert in the array
+ */
 void HospitalManager::insert_doctor(Doctor &new_doc) {
 	for (int i = 0; i < 20; i++) {
 		if (doctors[i] == nullptr) {
@@ -25,6 +32,11 @@ void HospitalManager::insert_doctor(Doctor &new_doc) {
 	std::cout << "All doctor slots are taken\n";
 }
 
+/**
+ * Adds a new patient to the array and sets the patient's bed number.
+ * @param new_pat new patient to insert into the array
+ * @return bed number, 0 if no beds available.
+ */
 int HospitalManager::admit_patient(Patient &new_pat) {
 	if (total_free_beds == 0) {
 		std::cout << "No free beds available\n";
@@ -50,6 +62,10 @@ int HospitalManager::admit_patient(Patient &new_pat) {
 	return 0;
 }
 
+/**
+ * removes a patient from the patient array, removes the patient from the doctor's array.
+ * @param pat patient to remove from the hospital
+ */
 void HospitalManager::discharge_patient(Patient &pat) {
 	for (int i = 0; i < 20; i++) {
 		if (doctors[i] != nullptr) {
@@ -66,6 +82,11 @@ void HospitalManager::discharge_patient(Patient &pat) {
 	}
 }
 
+/**
+ * Returns a patient's bed number
+ * @param patient_name patient's name
+ * @return bed number, 0 if no bed number found
+ */
 int HospitalManager::get_bed_number(const std::string &patient_name) const {
 	for (int i = 1; i < 101; i++) {
 		if (patients[i] != nullptr && patients[i]->get_name() == patient_name) {
@@ -75,8 +96,11 @@ int HospitalManager::get_bed_number(const std::string &patient_name) const {
 	return 0;
 }
 
-
-void HospitalManager::print_patient_info(std::string doc_name) const {
+/**
+ * Prints all of a doctors patient information
+ * @param doc_name doctor's name
+ */
+void HospitalManager::print_patient_info_doc(std::string doc_name) const {
 	for (int i = 0; i < 20; i++) {
 		if (doctors[i] != nullptr && doctors[i]->get_name() == doc_name) {
 			std::cout << "\nDr." << doctors[i]->get_name() << "'s patient information\n";
@@ -91,6 +115,9 @@ void HospitalManager::print_patient_info(std::string doc_name) const {
 	}
 }
 
+/**
+ * Prints all the information of the patients in the hospital
+ */
 void HospitalManager::print_all_patients() const {
 	std::cout << "Printing all hospital patient information\n";
 	for (int i = 0; i < 101; i++) {
@@ -100,7 +127,9 @@ void HospitalManager::print_all_patients() const {
 	}
 }
 
-
+/**
+ * Destructor, deletes all the patients and the doctors.
+ */
 HospitalManager::~HospitalManager() {
 	for (int i = 0; i < 20; i++) {
 		if (doctors[i] != nullptr) {

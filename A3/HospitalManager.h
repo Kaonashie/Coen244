@@ -37,7 +37,7 @@ public:
 
 	// Utility functions
 	int get_bed_number(const std::string &patient_name) const;
-	void print_patient_info(std::string doc_name) const;
+	void print_patient_info_doc(std::string doc_name) const;
 	void print_all_patients() const;
 
 	// Destructor
