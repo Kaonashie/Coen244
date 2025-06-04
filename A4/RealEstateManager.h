@@ -5,6 +5,7 @@
 #ifndef REALESTATEMANAGER_H
 #define REALESTATEMANAGER_H
 #include "RealEstateAgent.h"
+#include "LandSale.h"
 
 class RealEstateManager {
 private:
@@ -27,7 +28,7 @@ public:
 	// Print functions
 	void print_property_info(int id) const;
 	void print_agent_properties(int agent_id) const;
-	void print_all_properties() const;
+	void print_all_lands() const;
 };
 
 #endif //REALESTATEMANAGER_H

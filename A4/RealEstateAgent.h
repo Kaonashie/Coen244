@@ -16,7 +16,11 @@ private:
 public:
 	// Constructors
 	RealEstateAgent(const std::string &name, const Date &dob, int employee_id, const Date &employment_date) :
-		Person(name, dob), employee_id(employee_id), employment_date(employment_date) {}
+		Person(name, dob), employee_id(employee_id), employment_date(employment_date) {
+		for (int i = 0; i < 20; i++) {
+			properties[i] = nullptr;
+		}
+	}
 
 	// Getter methods
 	int get_employee_id() const { 
@@ -32,6 +36,26 @@ public:
 	}
 	void set_employment_date(const Date &employment_date) { 
 		this->employment_date = employment_date; 
+	}
+
+	bool add_property(Property* prop) {
+		for (int i = 0; i < 20; i++) {
+			if (properties[i] == nullptr) {
+				properties[i] = prop;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool remove_property(Property* prop) {
+		for (int i = 0; i < 20; i++) {
+			if (properties[i] != nullptr && properties[i]->get_unique_id() == prop->get_unique_id()) {
+				properties[i] = nullptr;
+				return true;
+			}
+		}
+		return false;
 	}
 };
 

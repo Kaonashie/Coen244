@@ -56,6 +56,8 @@ add_executable(A4 A4/main.cpp A4/main.h
         A4/ApartmentSale.cpp
         A4/ApartmentSale.h
         A4/RealEstateManager.cpp
-        A4/RealEstateManager.h)
+        A4/RealEstateManager.h
+        A4/LandSale.cpp
+        A4/LandSale.h)
 add_executable(A5 A5/main.cpp A5/main.h)
 add_executable(A6 A6/main.cpp A6/main.h)
