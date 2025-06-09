@@ -30,50 +30,22 @@ public:
 	virtual int get_sale_price() const = 0;
 
 	// Getter methods
-	int get_unique_id() const { 
-		return unique_id; 
-	}
-	std::string get_address() const { 
-		return address; 
-	}
-	Customer get_owner() const { 
-		return owner; 
-	}
-	int get_agent_id() const { 
-		return agent_id; 
-	}
-	Date get_listing_date() const { 
-		return listing_date; 
-	}
-	Date get_sell_date() const { 
-		return sell_date; 
-	}
-	int get_sold_price() const { 
-		return sold_price; 
-	}
+	int get_unique_id() const;
+	std::string get_address() const;
+	Customer get_owner() const;
+	int get_agent_id() const;
+	Date get_listing_date() const;
+	Date get_sell_date() const;
+	int get_sold_price() const;
 
 	// Setter methods
-	void set_unique_id(const int unique_id) { 
-		this->unique_id = unique_id; 
-	}
-	void set_address(const std::string &address) { 
-		this->address = address; 
-	}
-	void set_owner(const Customer &owner) { 
-		this->owner = owner; 
-	}
-	void set_agent_id(const int agent_id) { 
-		this->agent_id = agent_id; 
-	}
-	void set_listing_date(const Date &listing_date) { 
-		this->listing_date = listing_date; 
-	}
-	void set_sell_date(const Date &sell_date) { 
-		this->sell_date = sell_date; 
-	}
-	void set_sold_price(const int sold_price) { 
-		this->sold_price = sold_price; 
-	}
+	void set_unique_id(int unique_id);
+	void set_address(const std::string &address);
+	void set_owner(const Customer &owner);
+	void set_agent_id(int agent_id);
+	void set_listing_date(const Date &listing_date);
+	void set_sell_date(const Date &sell_date);
+	void set_sold_price(int sold_price);
 };
 
 #endif // PROPERTY_H

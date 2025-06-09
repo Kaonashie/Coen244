@@ -108,7 +108,7 @@ void RealEstateManager::print_property_info(int id) const {
 void RealEstateManager::print_agent_properties(int agent_id) const {
 	for (int i = 0; i < 30; i++) {
 		if (properties_for_sale[i]->get_agent_id() == agent_id) {
-
+			print_property_info(properties_for_sale[i]->get_unique_id());
 		}
 	}
 }

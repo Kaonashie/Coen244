@@ -29,6 +29,13 @@ int main() {
 
 	manager->sold_house(apt, 10000, Date(02,12,2002));
 
+	/**
+	 * Note :
+	 * Only deleting the manager here as it is responsible for the deletion of the properties and the agents.
+	 *
+	 *
+	 *
+	 */
 	delete manager;
 	return 0;
 }

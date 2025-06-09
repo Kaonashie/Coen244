@@ -12,13 +12,10 @@ private:
 
 public:
 	// Constructors
-	Customer();
-	Customer(const std::string &name, const Date &dob) : Person(name, dob) {}
+	Customer(std::string name = "", Date dob = Date(0, 0, 0), std::string social_insurance_number = "");
 
 	// Getter methods
-	std::string get_social_insurance_number() const { 
-		return social_insurance_number; 
-	}
+	std::string get_social_insurance_number() const;
 
 	// Setter methods
 	void set_social_insurance_number(const std::string &social_insurance_number);

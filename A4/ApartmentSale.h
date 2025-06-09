@@ -24,32 +24,16 @@ public:
 	~ApartmentSale() override = default;
 
 	// Getter methods
-	double get_condo_fees() const { 
-		return condo_fees; 
-	}
-	int get_year_built() const { 
-		return year_built; 
-	}
-	int get_no_rooms() const { 
-		return no_rooms; 
-	}
-	virtual int get_sale_price() const override { 
-		return sale_price; 
-	}
+	double get_condo_fees() const;
+	int get_year_built() const;
+	int get_no_rooms() const;
+	virtual int get_sale_price() const;
 
 	// Setter methods
-	void set_condo_fees(double condo_fees) { 
-		this->condo_fees = condo_fees; 
-	}
-	void set_year_built(int year_built) { 
-		this->year_built = year_built; 
-	}
-	void set_no_rooms(int no_rooms) { 
-		this->no_rooms = no_rooms; 
-	}
-	void set_sale_price(int sale_price) { 
-		this->sale_price = sale_price; 
-	}
+	void set_condo_fees(double condo_fees);
+	void set_year_built(int year_built);
+	void set_no_rooms(int no_rooms);
+	void set_sale_price(int sale_price);
 };
 
 #endif // APARTMENTSALE_H
