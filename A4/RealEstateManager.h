@@ -23,7 +23,7 @@ class RealEstateManager {
     // Management functions
     void insert_agent(RealEstateAgent* agent);
     void insert_property(Property* property);
-    void sold_house(Property* property, int price, Date date_of_sale);
+    void sold_property(Property* property, int price, Date date_of_sale);
 
     // Print functions
     void print_property_info(int id) const;

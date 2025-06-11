@@ -9,28 +9,40 @@
 #include "RealEstateManager.h"
 
 int main() {
-    auto customer_1 = new Customer("Marc", Date(02, 19, 2006), "124");
-    auto customer_2 = new Customer("Evelyn", Date(07, 29, 1996), "125");
 
+    // Create apartment, house and land sale objects
     auto apt = new ApartmentSale();
-
     auto house = new HouseSale();
-    auto manager = new RealEstateManager();
-    auto lands = new LandSale();
+    auto land = new LandSale();
+    // Set some information for printing later
+    land->set_sale_price(100000);
+    land->set_address("Montreal");
+    land->set_listing_date(Date(10, 9, 2025));
 
+    // Create manager object
+    auto manager = new RealEstateManager();
+
+    // Create agent object
     auto agent = new RealEstateAgent("Soma", Date(12, 02, 2002), 2002, Date(02, 05, 2025));
+
+    // Insert agent into the RealEstateManager
     manager->insert_agent(agent);
 
+    // Set the agent id of each Property to the agent that was created.
     apt->set_agent_id(agent->get_employee_id());
     house->set_agent_id(agent->get_employee_id());
-    lands->set_agent_id(agent->get_employee_id());
+    land->set_agent_id(agent->get_employee_id());
 
+    // Insert all the properties in the RealEstateManager
     manager->insert_property(apt);
     manager->insert_property(house);
-    manager->insert_property(lands);
+    manager->insert_property(land);
+
+    // Print information of all land properties (only one was created)
     manager->print_all_lands();
 
-    manager->sold_house(apt, 10000, Date(02, 12, 2002));
+    // Sell house
+    manager->sold_property(apt, 10000, Date(02, 12, 2002));
 
     /**
      * Note IMPORTANT:

@@ -47,7 +47,7 @@ RealEstateManager::~RealEstateManager() {
 // Management functions
 void RealEstateManager::insert_agent(RealEstateAgent *agent) {
     if (agent == nullptr) {
-        return;
+	return;
     }
     for (int i = 0; i < 30; i++) {
 	if (agents[i] == nullptr) {
@@ -60,7 +60,7 @@ void RealEstateManager::insert_agent(RealEstateAgent *agent) {
 // Insert property in array of properties for sale and adds the property to the agent's properties as well.
 void RealEstateManager::insert_property(Property *property) {
     if (property == nullptr) {
-        return;
+	return;
     }
     for (int i = 0; i < 1000; i++) {
 	if (properties_for_sale[i] == nullptr) {
@@ -77,9 +77,9 @@ void RealEstateManager::insert_property(Property *property) {
     }
 }
 
-// Removes property from agent's property list, removes property from properties_for_sale array, adds property to properties_sold array.
-// Updates the sell date and sold price of the property.
-void RealEstateManager::sold_house(Property *property, int price, Date date_of_sale) {
+// Removes property from agent's property list, removes property from properties_for_sale array, adds property to
+// properties_sold array. Updates the sell date and sold price of the property.
+void RealEstateManager::sold_property(Property *property, int price, Date date_of_sale) {
     if (property == nullptr) {
 	std::cout << "Cannot process property\n";
 	return;
@@ -108,9 +108,11 @@ void RealEstateManager::sold_house(Property *property, int price, Date date_of_s
 
 // Print functions
 void RealEstateManager::print_property_info(int id) const {
+    std::cout << "Printing property information \n\n";
     for (int i = 0; i < 1000; i++) {
 	if (properties_for_sale[i] != nullptr && properties_for_sale[i]->get_unique_id() == id) {
-	    std::cout << "Address: " << properties_for_sale[i]->get_address() << "\n"
+	    std::cout << "Property number " << properties_for_sale[i]->get_unique_id() << "'s information\n"
+		      << "Address: " << properties_for_sale[i]->get_address() << "\n"
 		      << "Sale Price: " << properties_for_sale[i]->get_sale_price() << "\n"
 		      << "Listing date: " << properties_for_sale[i]->get_listing_date() << "\n"
 		      << "Unique id: " << properties_for_sale[i]->get_unique_id() << "\n";
