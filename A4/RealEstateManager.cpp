@@ -41,10 +41,14 @@ RealEstateManager::~RealEstateManager() {
 	    properties_sold[i] = nullptr;
 	}
     }
+    std::cout << "Manager object successfully destroyed.\n";
 }
 
 // Management functions
 void RealEstateManager::insert_agent(RealEstateAgent *agent) {
+    if (agent == nullptr) {
+        return;
+    }
     for (int i = 0; i < 30; i++) {
 	if (agents[i] == nullptr) {
 	    agents[i] = agent;
@@ -53,7 +57,11 @@ void RealEstateManager::insert_agent(RealEstateAgent *agent) {
     }
 }
 
+// Insert property in array of properties for sale and adds the property to the agent's properties as well.
 void RealEstateManager::insert_property(Property *property) {
+    if (property == nullptr) {
+        return;
+    }
     for (int i = 0; i < 1000; i++) {
 	if (properties_for_sale[i] == nullptr) {
 	    properties_for_sale[i] = property;
@@ -69,6 +77,8 @@ void RealEstateManager::insert_property(Property *property) {
     }
 }
 
+// Removes property from agent's property list, removes property from properties_for_sale array, adds property to properties_sold array.
+// Updates the sell date and sold price of the property.
 void RealEstateManager::sold_house(Property *property, int price, Date date_of_sale) {
     if (property == nullptr) {
 	std::cout << "Cannot process property\n";
@@ -108,6 +118,7 @@ void RealEstateManager::print_property_info(int id) const {
     }
 }
 
+// Prints the information of all the properties an agent is selling.
 void RealEstateManager::print_agent_properties(int agent_id) const {
     for (int i = 0; i < 30; i++) {
 	if (properties_for_sale[i]->get_agent_id() == agent_id) {
@@ -116,6 +127,7 @@ void RealEstateManager::print_agent_properties(int agent_id) const {
     }
 }
 
+// Prints the information of all the land type properties.
 void RealEstateManager::print_all_lands() const {
     for (int i = 0; i < 1000; i++) {
 	if (properties_for_sale[i] != nullptr) {

@@ -24,7 +24,7 @@ class Property {
 	     const Date &sell_date, int sold_price);
 
     // Destructor
-    virtual ~Property() = default;
+    virtual ~Property();
 
     // Pure virtual function
     virtual int get_sale_price() const = 0;

@@ -18,7 +18,11 @@ Date RealEstateAgent::get_employment_date() const { return employment_date; }
 void RealEstateAgent::set_employee_id(const int employee_id) { this->employee_id = employee_id; }
 void RealEstateAgent::set_employment_date(const Date &employment_date) { this->employment_date = employment_date; }
 
+// Adds property to array
 bool RealEstateAgent::add_property(Property *prop) {
+    if (prop == nullptr) {
+        return false;
+    }
     for (int i = 0; i < 20; i++) {
 	if (properties[i] == nullptr) {
 	    properties[i] = prop;
@@ -28,7 +32,11 @@ bool RealEstateAgent::add_property(Property *prop) {
     return false;
 }
 
+// Removes property from array.
 bool RealEstateAgent::remove_property(Property *prop) {
+    if (prop == nullptr) {
+        return false;
+    }
     for (int i = 0; i < 20; i++) {
 	if (properties[i] != nullptr && properties[i]->get_unique_id() == prop->get_unique_id()) {
 	    properties[i] = nullptr;
@@ -38,6 +46,7 @@ bool RealEstateAgent::remove_property(Property *prop) {
     return false;
 }
 
+// Print function
 void RealEstateAgent::print_info() const {
     Person::print_info();
     std::cout << "Employee ID: " << employee_id << "\n"
@@ -54,4 +63,8 @@ void RealEstateAgent::print_info() const {
 	std::cout << "  No properties assigned.\n";
     }
     std::cout << "\n";
+}
+
+ RealEstateAgent::~RealEstateAgent() {
+    std::cout << "RealEstateAgent object destroyed successfully\n";
 }

@@ -7,11 +7,11 @@
 // Constructors
 
 HouseSale::HouseSale(std::string address, Customer customer, int agent_id, Date listing_date, Date sell_date,
-		     int sold_price, std::string house_type, int year_build, int no_rooms)
+		     int sold_price, std::string house_type, int year_built, int no_rooms, int sale_price)
     : Property(address, customer, agent_id, listing_date, sell_date, sold_price),
       house_type(house_type),
-      year_built(year_build),
-      no_rooms(no_rooms) {}
+      year_built(year_built),
+      no_rooms(no_rooms), sale_price(sale_price) {}
 
 // Destructor
 HouseSale::~HouseSale() { std::cout << "HouseSale object destroyed successfully\n"; }

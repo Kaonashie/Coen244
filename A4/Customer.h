@@ -20,6 +20,10 @@ class Customer : public Person {
     // Setter methods
     void set_social_insurance_number(const std::string &social_insurance_number);
 
+    // Print function
+    void print_info() const;
+
+    // Destructor
     ~Customer();
 };
 

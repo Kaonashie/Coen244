@@ -27,7 +27,11 @@ class RealEstateAgent : public Person {
     bool add_property(Property* prop);
     bool remove_property(Property* prop);
 
+    // Print function
     void print_info() const;
+
+    // Destructor
+    ~RealEstateAgent();
 };
 
 #endif	// REALESTATEAGENT_H

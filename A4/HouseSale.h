@@ -14,8 +14,8 @@ class HouseSale : public Property {
    public:
     // Constructors
     HouseSale(std::string address = "", Customer customer = Customer(), int agent_id = 0, Date listing_date = Date(),
-	      Date sell_date = Date(), int sold_price = 0, std::string house_type = "", int year_build = 0,
-	      int no_rooms = 0);
+	      Date sell_date = Date(), int sold_price = 0, std::string house_type = "", int year_built = 0,
+	      int no_rooms = 0, int sale_price = 0);
 
     // Destructor
     ~HouseSale();

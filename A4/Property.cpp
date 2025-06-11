@@ -33,6 +33,7 @@ Date Property::get_listing_date() const { return listing_date; }
 Date Property::get_sell_date() const { return sell_date; }
 int Property::get_sold_price() const { return sold_price; }
 
+
 // Setter methods
 void Property::set_unique_id(int unique_id) { this->unique_id = unique_id; }
 void Property::set_address(const std::string &address) { this->address = address; }
@@ -52,3 +53,7 @@ void Property::print_info() const {
 	      << "Sell Date: " << sell_date << "\n"
 	      << "Sold Price: " << sold_price << "\n";
 }
+
+
+// Destructor
+ Property::~Property() { std::cout << "Property object destroyed successfully.\n"; }
