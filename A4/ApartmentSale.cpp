@@ -8,41 +8,23 @@
 ApartmentSale::ApartmentSale() : Property() {}
 
 // Getter methods
-double ApartmentSale::get_condo_fees() const {
-	return condo_fees;
-}
-int ApartmentSale::get_year_built() const {
-	return year_built;
-}
-int ApartmentSale::get_no_rooms() const {
-	return no_rooms;
-}
-int ApartmentSale::get_sale_price() const {
-	return sale_price;
-}
+double ApartmentSale::get_condo_fees() const { return condo_fees; }
+int ApartmentSale::get_year_built() const { return year_built; }
+int ApartmentSale::get_no_rooms() const { return no_rooms; }
+int ApartmentSale::get_sale_price() const { return sale_price; }
 
 // Setter methods
-void ApartmentSale::set_condo_fees(double condo_fees) {
-	this->condo_fees = condo_fees;
-}
-void ApartmentSale::set_year_built(int year_built) {
-	this->year_built = year_built;
-}
-void ApartmentSale::set_no_rooms(int no_rooms) {
-	this->no_rooms = no_rooms;
-}
-void ApartmentSale::set_sale_price(int sale_price) {
-	this->sale_price = sale_price;
-}
+void ApartmentSale::set_condo_fees(double condo_fees) { this->condo_fees = condo_fees; }
+void ApartmentSale::set_year_built(int year_built) { this->year_built = year_built; }
+void ApartmentSale::set_no_rooms(int no_rooms) { this->no_rooms = no_rooms; }
+void ApartmentSale::set_sale_price(int sale_price) { this->sale_price = sale_price; }
 
 void ApartmentSale::print_info() const {
-	Property::print_info();
-	std::cout << "Condo fees: " << condo_fees << "\n"
-	<< "Year built: " << year_built << "\n"
-	<< "Number of rooms: " << no_rooms << "\n"
-	<< "Sale price: " << sale_price << "\n";
+    Property::print_info();
+    std::cout << "Condo fees: " << condo_fees << "\n"
+	      << "Year built: " << year_built << "\n"
+	      << "Number of rooms: " << no_rooms << "\n"
+	      << "Sale price: " << sale_price << "\n";
 }
 
- ApartmentSale::~ApartmentSale() {
-	std::cout << "ApartmentSale object destroyed sucessfully\n";
-}
+ApartmentSale::~ApartmentSale() { std::cout << "ApartmentSale object destroyed sucessfully\n"; }

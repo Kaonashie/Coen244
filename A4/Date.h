@@ -7,32 +7,32 @@
 #include <iostream>
 
 class Date {
-private:
-	int month, day, year;
+   private:
+    int month, day, year;
 
-public:
-	// Constructors
-	Date();
-	Date(int m, int d, int y);
+   public:
+    // Constructors
+    Date();
+    Date(int m, int d, int y);
 
-	// Getter methods
-	int get_month() const;
-	int get_day() const;
-	int get_year() const;
+    // Getter methods
+    int get_month() const;
+    int get_day() const;
+    int get_year() const;
 
-	// Setter methods
-	void set_month(int m);
-	void set_day(int d);
-	void set_year(int y);
+    // Setter methods
+    void set_month(int m);
+    void set_day(int d);
+    void set_year(int y);
 
-	// Print function
-	void print_info() const;
+    // Print function
+    void print_info() const;
 
-	// Operator overload
-	friend std::ostream &operator<<(std::ostream &os, const Date &dt);
+    // Operator overload
+    friend std::ostream &operator<<(std::ostream &os, const Date &dt);
 
-	// Destructor
-	~Date();
+    // Destructor
+    ~Date();
 };
 
-#endif // DATE_H
+#endif	// DATE_H

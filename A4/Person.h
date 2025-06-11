@@ -6,31 +6,32 @@
 #define PERSON_H
 #include <iostream>
 #include <string>
+
 #include "Date.h"
 
 class Person {
-private:
-	std::string name;
-	Date date_of_birth;
+   private:
+    std::string name;
+    Date date_of_birth;
 
-public:
-	// Constructors
-	Person();
-	Person(std::string name, Date dob);
+   public:
+    // Constructors
+    Person();
+    Person(std::string name, Date dob);
 
-	// Getter methods
-	std::string get_name() const;
-	Date get_date_of_birth() const;
+    // Getter methods
+    std::string get_name() const;
+    Date get_date_of_birth() const;
 
-	// Setter methods
-	Person *set_name(const std::string &new_name);
-	Person *set_date_of_birth(Date &new_dob);
+    // Setter methods
+    Person *set_name(const std::string &new_name);
+    Person *set_date_of_birth(Date &new_dob);
 
-	// Print function
-	void print_info() const;
+    // Print function
+    void print_info() const;
 
-	// Destructor
-	~Person();
+    // Destructor
+    ~Person();
 };
 
-#endif // PERSON_H
+#endif	// PERSON_H

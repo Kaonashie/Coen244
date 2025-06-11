@@ -7,28 +7,27 @@
 #include "Person.h"
 #include "Property.h"
 
-class RealEstateAgent: public Person {
-private:
-	int employee_id;
-	Date employment_date;
-	Property *properties[20];
+class RealEstateAgent : public Person {
+   private:
+    int employee_id;
+    Date employment_date;
+    Property* properties[20];
 
-public:
-	// Constructors
-	RealEstateAgent(std::string name = "", Date dob = Date(), int employee_id = 0, Date employment_date = Date());
+   public:
+    // Constructors
+    RealEstateAgent(std::string name = "", Date dob = Date(), int employee_id = 0, Date employment_date = Date());
 
+    // Getter methods
+    int get_employee_id() const;
+    Date get_employment_date() const;
 
-	// Getter methods
-	int get_employee_id() const;
-	Date get_employment_date() const;
+    // Setter methods
+    void set_employee_id(const int employee_id);
+    void set_employment_date(const Date& employment_date);
+    bool add_property(Property* prop);
+    bool remove_property(Property* prop);
 
-	// Setter methods
-	void set_employee_id(const int employee_id);
-	void set_employment_date(const Date &employment_date);
-	bool add_property(Property* prop);
-	bool remove_property(Property* prop);
-
-	void print_info() const;
+    void print_info() const;
 };
 
-#endif //REALESTATEAGENT_H
+#endif	// REALESTATEAGENT_H

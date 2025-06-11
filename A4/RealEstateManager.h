@@ -4,31 +4,31 @@
 
 #ifndef REALESTATEMANAGER_H
 #define REALESTATEMANAGER_H
-#include "RealEstateAgent.h"
 #include "LandSale.h"
+#include "RealEstateAgent.h"
 
 class RealEstateManager {
-private:
-	RealEstateAgent* agents[30];
-	Property* properties_for_sale[1000];
-	Property *properties_sold[500];
+   private:
+    RealEstateAgent* agents[30];
+    Property* properties_for_sale[1000];
+    Property* properties_sold[500];
 
-public:
-	// Constructors
-	RealEstateManager();
+   public:
+    // Constructors
+    RealEstateManager();
 
-	// Destructor
-	~RealEstateManager();
+    // Destructor
+    ~RealEstateManager();
 
-	// Management functions
-	void insert_agent(RealEstateAgent* agent);
-	void insert_property(Property* property);
-	void sold_house(Property* property, int price, Date date_of_sale);
+    // Management functions
+    void insert_agent(RealEstateAgent* agent);
+    void insert_property(Property* property);
+    void sold_house(Property* property, int price, Date date_of_sale);
 
-	// Print functions
-	void print_property_info(int id) const;
-	void print_agent_properties(int agent_id) const;
-	void print_all_lands() const;
+    // Print functions
+    void print_property_info(int id) const;
+    void print_agent_properties(int agent_id) const;
+    void print_all_lands() const;
 };
 
-#endif //REALESTATEMANAGER_H
+#endif	// REALESTATEMANAGER_H
