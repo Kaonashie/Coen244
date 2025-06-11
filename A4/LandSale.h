@@ -12,8 +12,21 @@ private:
 	double area_of_land;
 	int sale_price;
 public:
-	double get_area_of_land() { return area_of_land;}
-	int get_sale_price() const {return sale_price;}
+	// Constructors
+	LandSale(std::string address = "", Customer customer = Customer(), int agent_id = 0, Date listing_date = Date(), Date sell_date = Date(), int sold_price = 0, double area_of_land = 0, int sale_price = 0);
+
+	// Getter functions
+	double get_area_of_land() const;
+	int get_sale_price() const;
+
+	// Setter functions
+	LandSale* set_area_of_land(double area);
+	LandSale* set_sale_price(int price);
+
+	virtual void print_info() const;
+
+	~LandSale();
+
 };
 
 

@@ -14,7 +14,7 @@ Property::Property() {
 
 Property::Property(const std::string &address, const Customer &owner, int agent_id, const Date &listing_date,
 				   const Date &sell_date, int sold_price) :
-	unique_id(unique_id), address(address), owner(owner), agent_id(agent_id), listing_date(listing_date),
+	 address(address), owner(owner), agent_id(agent_id), listing_date(listing_date),
 	sell_date(sell_date), sold_price(sold_price) {
 	unique_id = counter;
 	counter++;
@@ -64,4 +64,15 @@ void Property::set_sell_date(const Date &sell_date) {
 }
 void Property::set_sold_price(int sold_price) {
 	this->sold_price = sold_price;
+}
+
+// Print function
+void Property::print_info() const {
+	std::cout << "Property ID: " << unique_id << "\n"
+			  << "Address: " << address << "\n"
+			  << "Owner: " << owner.get_name() << "\n"
+			  << "Agent ID: " << agent_id << "\n"
+			  << "Listing Date: " << listing_date << "\n"
+			  << "Sell Date: " << sell_date << "\n"
+			  << "Sold Price: " << sold_price << "\n";
 }

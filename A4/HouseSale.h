@@ -24,18 +24,10 @@ public:
 	~HouseSale() override = default;
 
 	// Getter methods
-	std::string house_type1() const { 
-		return house_type; 
-	}
-	int get_year_built() const { 
-		return year_built; 
-	}
-	int get_no_rooms() const { 
-		return no_rooms; 
-	}
-	virtual int get_sale_price() const override {
-		return sale_price;
-	}
+	std::string house_type1() const;
+	int get_year_built() const;
+	int get_no_rooms() const;
+	virtual int get_sale_price() const;
 
 	// Setter methods
 	HouseSale* set_year_built(int n_year);

@@ -46,6 +46,9 @@ public:
 	void set_listing_date(const Date &listing_date);
 	void set_sell_date(const Date &sell_date);
 	void set_sold_price(int sold_price);
+
+	// Print function
+	virtual void print_info() const;
 };
 
 #endif // PROPERTY_H

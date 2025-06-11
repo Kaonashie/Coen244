@@ -23,40 +23,16 @@ public:
 	}
 
 	// Getter methods
-	int get_employee_id() const { 
-		return employee_id; 
-	}
-	Date get_employment_date() const { 
-		return employment_date; 
-	}
+	int get_employee_id() const;
+	Date get_employment_date() const;
 
 	// Setter methods
-	void set_employee_id(const int employee_id) { 
-		this->employee_id = employee_id; 
-	}
-	void set_employment_date(const Date &employment_date) { 
-		this->employment_date = employment_date; 
-	}
+	void set_employee_id(const int employee_id);
+	void set_employment_date(const Date &employment_date);
+	bool add_property(Property* prop);
+	bool remove_property(Property* prop);
 
-	bool add_property(Property* prop) {
-		for (int i = 0; i < 20; i++) {
-			if (properties[i] == nullptr) {
-				properties[i] = prop;
-				return true;
-			}
-		}
-		return false;
-	}
-
-	bool remove_property(Property* prop) {
-		for (int i = 0; i < 20; i++) {
-			if (properties[i] != nullptr && properties[i]->get_unique_id() == prop->get_unique_id()) {
-				properties[i] = nullptr;
-				return true;
-			}
-		}
-		return false;
-	}
+	void print_info() const;
 };
 
 #endif //REALESTATEAGENT_H

@@ -8,6 +8,9 @@
 #include "RealEstateManager.h"
 
 int main() {
+	auto customer_1 = new Customer("Marc", Date(02, 19, 2006), "124");
+	auto customer_2 = new Customer("Evelyn", Date(07, 29, 1996), "125");
+
 	auto apt = new ApartmentSale();
 
 	auto house = new HouseSale();
@@ -30,12 +33,13 @@ int main() {
 	manager->sold_house(apt, 10000, Date(02,12,2002));
 
 	/**
-	 * Note :
+	 * Note IMPORTANT:
 	 * Only deleting the manager here as it is responsible for the deletion of the properties and the agents.
-	 *
-	 *
+	 * Manually deleting the agents and properties here doesn't make sense considering the manager owns them.
 	 *
 	 */
 	delete manager;
+
+	std::cout << "Program ended\n";
 	return 0;
 }

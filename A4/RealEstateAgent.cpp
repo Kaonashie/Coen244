@@ -4,5 +4,56 @@
 
 #include "RealEstateAgent.h"
 
-// Implementation file for RealEstateAgent class
-// All methods are implemented inline in the header file
+// Getter methods
+int RealEstateAgent::get_employee_id() const {
+	return employee_id;
+}
+Date RealEstateAgent::get_employment_date() const {
+	return employment_date;
+}
+
+// Setter methods
+void RealEstateAgent::set_employee_id(const int employee_id) {
+	this->employee_id = employee_id;
+}
+void RealEstateAgent::set_employment_date(const Date &employment_date) {
+	this->employment_date = employment_date;
+}
+
+bool RealEstateAgent::add_property(Property* prop) {
+	for (int i = 0; i < 20; i++) {
+		if (properties[i] == nullptr) {
+			properties[i] = prop;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool RealEstateAgent::remove_property(Property* prop) {
+	for (int i = 0; i < 20; i++) {
+		if (properties[i] != nullptr && properties[i]->get_unique_id() == prop->get_unique_id()) {
+			properties[i] = nullptr;
+			return true;
+		}
+	}
+	return false;
+}
+
+void RealEstateAgent::print_info() const {
+	Person::print_info();
+	std::cout << "Employee ID: " << employee_id << "\n"
+			  << "Employment Date: " << employment_date << "\n";
+	std::cout << "Properties managed:\n";
+	bool has_properties = false;
+	for (int i = 0; i < 20; i++) {
+		if (properties[i] != nullptr) {
+			std::cout << "  - Property ID: " << properties[i]->get_unique_id() << "\n";
+			has_properties = true;
+		}
+	}
+	if (!has_properties) {
+		std::cout << "  No properties assigned.\n";
+	}
+	std::cout << "\n";
+}
