@@ -16,3 +16,8 @@ std::string Customer::get_social_insurance_number() const {
 void Customer::set_social_insurance_number(const std::string &social_insurance_number) {
 	this->social_insurance_number = social_insurance_number;
 }
+
+// Destructor
+Customer::~Customer() {
+	std::cout << "Customer object destroyed successfully\n";
+}

@@ -19,6 +19,8 @@ public:
 
 	// Setter methods
 	void set_social_insurance_number(const std::string &social_insurance_number);
+
+	~Customer();
 };
 
 #endif //CUSTOMER_H

@@ -70,6 +70,10 @@ void RealEstateManager::insert_property(Property *property) {
 }
 
 void RealEstateManager::sold_house(Property *property, int price, Date date_of_sale) {
+	if (property == nullptr) {
+		std::cout << "Cannot process property\n";
+		return;
+	}
 	for (int i = 0; i < 1000; i++) {
 		if (properties_for_sale[i]->get_unique_id() == property->get_unique_id()) {
 			properties_for_sale[i] = nullptr;

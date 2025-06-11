@@ -21,7 +21,7 @@ public:
 		year_built(year_built), no_rooms(no_rooms), sale_price(sale_price) {}
 
 	// Destructor
-	~ApartmentSale() override = default;
+	~ApartmentSale();
 
 	// Getter methods
 	double get_condo_fees() const;
@@ -34,6 +34,9 @@ public:
 	void set_year_built(int year_built);
 	void set_no_rooms(int no_rooms);
 	void set_sale_price(int sale_price);
+
+	// Print function
+	virtual void print_info() const;
 };
 
 #endif // APARTMENTSALE_H

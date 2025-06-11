@@ -34,3 +34,15 @@ void ApartmentSale::set_no_rooms(int no_rooms) {
 void ApartmentSale::set_sale_price(int sale_price) {
 	this->sale_price = sale_price;
 }
+
+void ApartmentSale::print_info() const {
+	Property::print_info();
+	std::cout << "Condo fees: " << condo_fees << "\n"
+	<< "Year built: " << year_built << "\n"
+	<< "Number of rooms: " << no_rooms << "\n"
+	<< "Sale price: " << sale_price << "\n";
+}
+
+ ApartmentSale::~ApartmentSale() {
+	std::cout << "ApartmentSale object destroyed sucessfully\n";
+}

@@ -15,12 +15,8 @@ private:
 
 public:
 	// Constructors
-	RealEstateAgent(const std::string &name, const Date &dob, int employee_id, const Date &employment_date) :
-		Person(name, dob), employee_id(employee_id), employment_date(employment_date) {
-		for (int i = 0; i < 20; i++) {
-			properties[i] = nullptr;
-		}
-	}
+	RealEstateAgent(std::string name = "", Date dob = Date(), int employee_id = 0, Date employment_date = Date());
+
 
 	// Getter methods
 	int get_employee_id() const;
