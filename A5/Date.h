@@ -30,8 +30,8 @@ class Date {
 
     // Operator overload
     friend std::ostream &operator<<(std::ostream &os, const Date &dt);
-    bool operator>(Date& date_2);
 
+    bool operator>(Date &date_2);
     // Destructor
     ~Date();
 };
