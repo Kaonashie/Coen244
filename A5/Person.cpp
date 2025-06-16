@@ -14,8 +14,8 @@ Person::Person(std::string name, Date dob) {
 
 // Getter methods
 std::string Person::get_name() const { return this->name; }
-
-Date Person::get_date_of_birth() const { return this->date_of_birth; }
+// Returning a const Date reference to reduce copying
+const Date& Person::get_date_of_birth() const { return this->date_of_birth; }
 
 // Setter methods
 Person *Person::set_name(const std::string &new_name) {
@@ -32,6 +32,13 @@ Person *Person::set_date_of_birth(Date &new_dob) {
 void Person::print_info() const {
     std::cout << "Name: " << name << "\n"
 	      << "Date of birth: " << this->date_of_birth << "\n";
+}
+
+// Overloaded insertion operator
+std::ostream& operator<<(std::ostream& os, Person& person) {
+    os << "Name: " << person.get_name() << "\n"
+    << "Date of birth: " << person.get_date_of_birth() << "\n";
+    return os;
 }
 
 // Destructor

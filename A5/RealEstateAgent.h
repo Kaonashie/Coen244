@@ -19,7 +19,7 @@ class RealEstateAgent : public Person {
 
     // Getter methods
     int get_employee_id() const;
-    Date get_employment_date() const;
+    const Date& get_employment_date() const;
 
     // Setter methods
     void set_employee_id(const int employee_id);
@@ -29,6 +29,9 @@ class RealEstateAgent : public Person {
 
     // Print function
     void print_info() const;
+
+    // Overloaded insertion operator
+    friend std::ostream& operator<<(std::ostream& os, RealEstateAgent& agent);
 
     // Destructor
     ~RealEstateAgent();

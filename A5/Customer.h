@@ -23,6 +23,9 @@ class Customer : public Person {
     // Print function
     void print_info() const;
 
+    // Overloaded insertion operator
+    friend std::ostream& operator<<(std::ostream& os, Customer& customer);
+
     // Destructor
     ~Customer();
 };

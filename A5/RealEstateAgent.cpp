@@ -12,7 +12,7 @@ RealEstateAgent::RealEstateAgent(std::string name, Date dob, int employee_id, Da
 }
 // Getter methods
 int RealEstateAgent::get_employee_id() const { return employee_id; }
-Date RealEstateAgent::get_employment_date() const { return employment_date; }
+const Date& RealEstateAgent::get_employment_date() const { return employment_date; }
 
 // Setter methods
 void RealEstateAgent::set_employee_id(const int employee_id) { this->employee_id = employee_id; }
@@ -63,6 +63,14 @@ void RealEstateAgent::print_info() const {
 	std::cout << "  No properties assigned.\n";
     }
     std::cout << "\n";
+}
+
+// Overloaded insertion operator
+std::ostream& operator<<(std::ostream& os, RealEstateAgent& agent) {
+    os << dynamic_cast<Person&>(agent)
+    << "Employee id: " << agent.get_employee_id() << "\n"
+    << "Employment Date: " << agent.get_employment_date() << "\n";
+    return os;
 }
 
  RealEstateAgent::~RealEstateAgent() {

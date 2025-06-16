@@ -21,7 +21,7 @@ class Person {
 
     // Getter methods
     std::string get_name() const;
-    Date get_date_of_birth() const;
+    const Date& get_date_of_birth() const;
 
     // Setter methods
     Person *set_name(const std::string &new_name);
@@ -29,6 +29,8 @@ class Person {
 
     // Print function
     void print_info() const;
+
+    friend std::ostream& operator<<(std::ostream& os, Person& person);
 
     // Destructor
     ~Person();

@@ -22,5 +22,12 @@ void Customer::print_info() const {
     std::cout << "Social insurance number: " << social_insurance_number << "\n";
 }
 
+// Overloaded insertion operator
+std::ostream& operator<<(std::ostream& os, Customer& customer) {
+    os << dynamic_cast<Person&>(customer)
+    << "Social insurance number: " << customer.get_social_insurance_number() << "\n";
+    return os;
+}
+
 // Destructor
 Customer::~Customer() { std::cout << "Customer object destroyed successfully\n"; }
