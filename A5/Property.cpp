@@ -29,8 +29,8 @@ int Property::get_unique_id() const { return unique_id; }
 std::string Property::get_address() const { return address; }
 Customer Property::get_owner() const { return owner; }
 int Property::get_agent_id() const { return agent_id; }
-Date Property::get_listing_date() const { return listing_date; }
-Date Property::get_sell_date() const { return sell_date; }
+Date &Property::get_listing_date() { return listing_date; }
+const Date& Property::get_sell_date() const { return sell_date; }
 int Property::get_sold_price() const { return sold_price; }
 
 

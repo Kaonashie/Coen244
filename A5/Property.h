@@ -34,8 +34,8 @@ class Property {
     std::string get_address() const;
     Customer get_owner() const;
     int get_agent_id() const;
-    Date get_listing_date() const;
-    Date get_sell_date() const;
+    Date &get_listing_date();
+    const Date& get_sell_date() const;
     int get_sold_price() const;
 
     // Setter methods

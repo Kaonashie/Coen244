@@ -33,7 +33,7 @@ class Person {
     friend std::ostream& operator<<(std::ostream& os, Person& person);
 
     // Destructor
-    ~Person();
+    virtual ~Person();
 };
 
 #endif	// PERSON_H

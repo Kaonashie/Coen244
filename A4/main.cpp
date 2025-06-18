@@ -3,7 +3,6 @@
 //
 
 #include "main.h"
-
 #include "ApartmentSale.h"
 #include "HouseSale.h"
 #include "RealEstateManager.h"
@@ -48,7 +47,6 @@ int main() {
      * Note IMPORTANT:
      * Only deleting the manager here as it is responsible for the deletion of the properties and the agents.
      * Manually deleting the agents and properties here doesn't make sense considering the manager owns them.
-     *
      */
     delete manager;
 

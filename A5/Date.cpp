@@ -56,5 +56,16 @@ bool Date::operator>(Date& date_2) {
     return false;
 }
 
+Date Date::operator+(int month) {
+    int new_m = this->month + month;
+    int new_y = this->year;
+    if (new_m > 12) {
+        new_m -= 12;
+        new_y += 1;
+    }
+    return Date(new_m, this->day, new_y);
+}
+
+
 // Destructor
 Date::~Date() { std::cout << "Date object destroyed successfully \n"; }
