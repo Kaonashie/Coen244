@@ -148,7 +148,7 @@ bool RealEstateManager::remove_property(Date currentDate) {
 		    }
 		}
 		delete properties_for_sale[i];
-		properties_for_sale[i] == nullptr;
+		properties_for_sale[i] = nullptr;
 		return true;
 	    }
 	}
@@ -159,6 +159,9 @@ bool RealEstateManager::remove_property(Date currentDate) {
 // Save a person with their information if they don't already exist in the file
 bool RealEstateManager::savePerson(std::string personFile, Person *person) {
     auto inFile = std::ifstream(personFile, std::ios::in);
+    if (!inFile.is_open()) {
+        throw std::runtime_error("Could not open the file: " + personFile);
+    }
 
     std::string name;
     auto customer = dynamic_cast<Customer*>(person);
@@ -203,6 +206,9 @@ bool RealEstateManager::savePerson(std::string personFile, Person *person) {
 
 void RealEstateManager::searchPerson(std::string personFile, std::string className, std::string personName) {
     auto inFile = std::ifstream(personFile, std::ios::in);
+    if (!inFile.is_open()) {
+        throw std::runtime_error("Could not open the file: " + personFile);
+    }
     // Verify if the person exists in the file by looking at their name.
     std::string cur_name, class_name;
     while (inFile >> class_name >> cur_name) {
@@ -214,16 +220,19 @@ void RealEstateManager::searchPerson(std::string personFile, std::string classNa
                 inFile >> day >> month >> year >> sin;
                 auto customer = new Customer(cur_name, Date(month, day, year), sin);
                 std::cout << *customer << std::endl;
+                delete customer;
             } else if (class_name == "RealEstateAgent") {
                 int employee_id;
                 int day, eday, month, emonth, year, eyear;
                 inFile >> day >> month >> year >> employee_id >> eday >> emonth >> eyear;
                 auto agent = new RealEstateAgent(cur_name, Date(month, day, year), employee_id, Date(emonth, eday, eyear));
                 std::cout << *agent << std::endl;
+                delete agent;
             }
             inFile.close();
         }
     }
+    throw std::runtime_error("Person not found in the file.");
 }
 
 // Prints the information of all the land type properties.

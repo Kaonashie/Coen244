@@ -38,6 +38,8 @@ int main() {
     } else {
         std::cout << "Could not remove property\n\n";
     }
+    try {
+
     // Test save person function
     manager->savePerson("people.txt", customer);
     manager->savePerson("people.txt", customer2);
@@ -46,10 +48,16 @@ int main() {
     manager->searchPerson("people.txt", "Customer", "soma");
     manager->searchPerson("people.txt", "Customer", "James");
     manager->searchPerson("people.txt", "RealEstateAgent", "Jake");
+    } catch (const std::exception &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+   
 
     delete date_1;
     delete date_2;
     delete customer;
+    delete customer2;
+    delete manager;
     delete agent;
     return 0;
 }
